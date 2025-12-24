@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery</title>
+    <title>图库</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.544.0/dist/umd/lucide.min.js"></script>
     <style>
@@ -75,9 +75,9 @@
                 </div>
                 <!-- 桌面端导航 - 仅大屏显示 -->
                 <nav class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="nav-link text-gray-600 hover:text-black">Home</a>
-                    <a href="gallery.html" class="nav-link active text-black hover:text-gray-600">Gallery</a>
-                    <a href="about.html" class="nav-link text-gray-600 hover:text-black">About</a>
+                    <a href="index.html" class="nav-link text-gray-600 hover:text-black">首页</a>
+                    <a href="gallery.html" class="nav-link active text-black hover:text-gray-600">图库</a>
+                    <a href="about.html" class="nav-link text-gray-600 hover:text-black">关于</a>
                 </nav>
                 <!-- 移动端菜单按钮 - 仅小屏显示 -->
                 <div class="md:hidden flex items-center">
@@ -90,9 +90,9 @@
         <!-- 移动端导航菜单 - 仅小屏显示 -->
         <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md mobile-menu-enter mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-black">Home</a>
-                <a href="gallery.html" class="block px-3 py-2 rounded-md text-base font-medium text-black hover:bg-gray-50">Gallery</a>
-                <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-black">About</a>
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-black">首页</a>
+                <a href="gallery.html" class="block px-3 py-2 rounded-md text-base font-medium text-black hover:bg-gray-50">图库</a>
+                <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-black">关于</a>
             </div>
         </div>
     </header>
@@ -105,18 +105,18 @@
             <aside class="w-full lg:w-1/3">
                 <div class="bg-white p-4 rounded-lg shadow-sm">
                     <div class="flex flex-col items-center">
-                        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/7d3fdf5c53f84b95aa8a0e3527af76aa~tplv-a9rns2rl98-image.image?rcl=20251222225753D0F7F6B3A8AEE7981537&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769007486&x-signature=%2F37b%2B0AQ2yJOtLhiJa1GCWJT8B0%3D" alt="Personal Avatar" class="w-32 h-32 rounded-full mb-4 cursor-pointer" onclick="openModal('https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/7d3fdf5c53f84b95aa8a0e3527af76aa~tplv-a9rns2rl98-image.image?rcl=20251222225753D0F7F6B3A8AEE7981537&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769007486&x-signature=%2F37b%2B0AQ2yJOtLhiJa1GCWJT8B0%3D')">
+                        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/7d3fdf5c53f84b95aa8a0e3527af76aa~tplv-a9rns2rl98-image.image?rcl=20251222225753D0F7F6B3A8AEE7981537&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769007486&x-signature=%2F37b%2B0AQ2yJOtLhiJa1GCWJT8B0%3D" alt="个人头像" class="w-32 h-32 rounded-full mb-4 cursor-pointer" onclick="openModal('https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/7d3fdf5c53f84b95aa8a0e3527af76aa~tplv-a9rns2rl98-image.image?rcl=20251222225753D0F7F6B3A8AEE7981537&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769007486&x-signature=%2F37b%2B0AQ2yJOtLhiJa1GCWJT8B0%3D')">
                         <h2 class="text-lg font-semibold text-gray-800">Jane Doe</h2>
-                        <p class="text-sm text-gray-500 mt-1">UX Designer & Writer</p>
+                        <p class="text-sm text-gray-500 mt-1">UX 设计师 & 作家</p>
                     </div>
                     <div class="mt-6">
-                        <h3 class="text-sm font-semibold text-gray-800 uppercase tracking-wide">About Me</h3>
+                        <h3 class="text-sm font-semibold text-gray-800 uppercase tracking-wide">关于我</h3>
                         <p class="mt-2 text-sm text-gray-600">
-                            Exploring the intersection of design and technology through writing and creative projects.
+                            通过写作和创意项目探索设计与技术的交汇点。
                         </p>
                     </div>
                     <div class="mt-6">
-                        <h3 class="text-sm font-semibold text-gray-800 uppercase tracking-wide">Social</h3>
+                        <h3 class="text-sm font-semibold text-gray-800 uppercase tracking-wide">社交</h3>
                         <div class="mt-3 flex space-x-3">
                             <a href="social/twitter.html" class="text-gray-400 hover:text-gray-500">
                                 <i data-lucide="twitter"></i>
@@ -130,14 +130,14 @@
                         </div>
                     </div>
                     <div class="mt-6">
-                        <h3 class="text-sm font-semibold text-gray-800 uppercase tracking-wide">Gallery Type</h3>
+                        <h3 class="text-sm font-semibold text-gray-800 uppercase tracking-wide">图库类型</h3>
                         <div class="mt-4 flex items-center justify-center gap-4">
-                            <span class="text-sm text-gray-600">Life Photos</span>
+                            <span class="text-sm text-gray-600">生活照片</span>
                             <label for="gallery-toggle" class="relative inline-flex items-center cursor-pointer">
                                 <input type="checkbox" id="gallery-toggle" class="sr-only peer">
                                 <div class="w-14 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-gray-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-gray-700"></div>
                             </label>
-                            <span class="text-sm text-gray-600">Art Photos</span>
+                            <span class="text-sm text-gray-600">艺术图片</span>
                         </div>
                     </div>
                 </div>
@@ -158,11 +158,11 @@
                 </div>
                 <div class="flex space-x-6">
                     <a href="privacy-policy.html" class="text-gray-400 hover:text-gray-500">
-                        <span class="sr-only">Privacy Policy</span>
+                        <span class="sr-only">隐私政策</span>
                         <i data-lucide="shield"></i>
                     </a>
                     <a href="terms-of-service.html" class="text-gray-400 hover:text-gray-500">
-                        <span class="sr-only">Terms of Service</span>
+                        <span class="sr-only">服务条款</span>
                         <i data-lucide="file-text"></i>
                     </a>
                 </div>
@@ -199,7 +199,7 @@
             modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50';
             modal.innerHTML = `
                 <div class="relative max-w-4xl max-h-[90vh]">
-                    <img src="${imageSrc}" alt="Enlarged Image" class="max-w-full max-h-[90vh] object-contain">
+                    <img src="${imageSrc}" alt="放大的图片" class="max-w-full max-h-[90vh] object-contain">
                     <button onclick="closeModal()" class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75">
                         <i data-lucide="x" class="h-6 w-6"></i>
                     </button>
@@ -219,24 +219,24 @@
         }
 
         const lifeImages = [
-            { src: 'https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/59486871721e4702a2bf786b0772f925~tplv-a9rns2rl98-image.image?rcl=202512222319420FE19C8811138FAF76B0&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769008832&x-signature=HNT4zXnYtpCJ68xKn5%2Fyd4lqiBM%3D', alt: 'Mountain Landscape' },
-            { src: 'https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/70b3346c953141d1a8e47b8cc41e1e42~tplv-a9rns2rl98-image.image?rcl=202512222319420FE19C8811138FAF76B0&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769008832&x-signature=hiKEOvoNVe5zh%2F7jjGBvd5f%2BDw8%3D', alt: 'Rainy City Street' },
-            { src: 'https://p3-doubao-search-sign.byteimg.com/labis/82140b0586b4f1dd77df993e68937480~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781972809&x-signature=BqPObhiQy%2BsxRtAVm1Qq2FPKhn4%3D', alt: 'Foggy Forest' },
-            { src: 'https://p3-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/1265741825922433026~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781972809&x-signature=ZJS%2BA%2FYPRMUcKJQPFTFJeS%2Fwjf8%3D', alt: 'Urban Architecture' },
-			{ src: 'https://free.picui.cn/free/2025/12/10/6938e376975b4.jpg', alt: 'Modern Decor' },
-			{ src: 'https://p3-doubao-search-sign.byteimg.com/labis/82140b0586b4f1dd77df993e68937480~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781972809&x-signature=BqPObhiQy%2BsxRtAVm1Qq2FPKhn4%3D', alt: 'Foggy Forest' },
-            { src: 'https://p3-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/1265741825922433026~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781972809&x-signature=ZJS%2BA%2FYPRMUcKJQPFTFJeS%2Fwjf8%3D', alt: 'Urban Architecture' },
-			{ src: 'https://free.picui.cn/free/2025/12/10/6938e336697e1.jpg', alt: 'Chess Set' },
-			{ src: 'https://free.picui.cn/free/2025/12/10/6938e37687d45.jpg', alt: 'Abstract Pattern' },
+            { src: 'https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/59486871721e4702a2bf786b0772f925~tplv-a9rns2rl98-image.image?rcl=202512222319420FE19C8811138FAF76B0&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769008832&x-signature=HNT4zXnYtpCJ68xKn5%2Fyd4lqiBM%3D', alt: '山间风景' },
+            { src: 'https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/70b3346c953141d1a8e47b8cc41e1e42~tplv-a9rns2rl98-image.image?rcl=202512222319420FE19C8811138FAF76B0&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769008832&x-signature=hiKEOvoNVe5zh%2F7jjGBvd5f%2BDw8%3D', alt: '雨天城市街道' },
+            { src: 'https://p3-doubao-search-sign.byteimg.com/labis/82140b0586b4f1dd77df993e68937480~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781972809&x-signature=BqPObhiQy%2BsxRtAVm1Qq2FPKhn4%3D', alt: '雾中森林' },
+            { src: 'https://p3-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/1265741825922433026~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781972809&x-signature=ZJS%2BA%2FYPRMUcKJQPFTFJeS%2Fwjf8%3D', alt: '城市建筑' },
+			{ src: 'https://free.picui.cn/free/2025/12/10/6938e376975b4.jpg', alt: 'md' },
+			{ src: 'https://p3-doubao-search-sign.byteimg.com/labis/82140b0586b4f1dd77df993e68937480~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781972809&x-signature=BqPObhiQy%2BsxRtAVm1Qq2FPKhn4%3D', alt: '雾中森林' },
+            { src: 'https://p3-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/1265741825922433026~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781972809&x-signature=ZJS%2BA%2FYPRMUcKJQPFTFJeS%2Fwjf8%3D', alt: '城市建筑' },
+			{ src: 'https://free.picui.cn/free/2025/12/10/6938e336697e1.jpg', alt: '国际象棋' },
+			{ src: 'https://free.picui.cn/free/2025/12/10/6938e37687d45.jpg', alt: '甜品' },
         ];
         
         const artImages = [
-            { src: 'https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/9244eb4542794ad48bdfea1718999b6e~tplv-a9rns2rl98-image.image?rcl=202512222319420FE19C8811138FAF76B0&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769008831&x-signature=3%2FLhGOqrEoVHdWICLjNpZKYeQ%2B0%3D', alt: 'Minimalist Flower' },
-            { src: 'https://p3-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/1070337323836899482~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781972809&x-signature=j%2Bk9G2xDMKRhV82tJGcfV9D35cI%3D', alt: 'Minimalist Architecture' },
-            { src: 'https://p3-doubao-search-sign.byteimg.com/mosaic-legacy/289500047e5665a16406~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781972809&x-signature=by0fhIuZ4AKx6hqd5n2Ub2POaZ0%3D', alt: 'Portrait' },
-            { src: 'https://p11-doubao-search-sign.byteimg.com/pgc-image/e27524db31684767804dd7124feb2c4d~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781972809&x-signature=keCHoS1iPqvPfUTwOXqPeOyALvA%3D', alt: 'Minimalist Silhouette' },
-            { src: 'https://free.picui.cn/free/2025/12/10/6938e3365aca4.png', alt: 'Coconut Illustration' },
-            { src: 'https://free.picui.cn/free/2025/12/10/6938e3359dc51.jpg', alt: 'Arturo Painting' },
+            { src: 'https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/9244eb4542794ad48bdfea1718999b6e~tplv-a9rns2rl98-image.image?rcl=202512222319420FE19C8811138FAF76B0&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769008831&x-signature=3%2FLhGOqrEoVHdWICLjNpZKYeQ%2B0%3D', alt: '极简主义花卉' },
+            { src: 'https://p3-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/1070337323836899482~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781972809&x-signature=j%2Bk9G2xDMKRhV82tJGcfV9D35cI%3D', alt: '极简主义建筑' },
+            { src: 'https://p3-doubao-search-sign.byteimg.com/mosaic-legacy/289500047e5665a16406~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781972809&x-signature=by0fhIuZ4AKx6hqd5n2Ub2POaZ0%3D', alt: '肖像' },
+            { src: 'https://p11-doubao-search-sign.byteimg.com/pgc-image/e27524db31684767804dd7124feb2c4d~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781972809&x-signature=keCHoS1iPqvPfUTwOXqPeOyALvA%3D', alt: '极简主义剪影' },
+            { src: 'https://free.picui.cn/free/2025/12/10/6938e3365aca4.png', alt: '椰子' },
+            { src: 'https://free.picui.cn/free/2025/12/10/6938e3359dc51.jpg', alt: '阿图罗' },
         ];
 
         const galleryContainer = document.getElementById('gallery-container');
@@ -284,7 +284,7 @@
             renderGallery(currentGallery === 'life' ? lifeImages : artImages);
         });
 
-        // Initial render
+        // 初始渲染
         renderGallery(lifeImages);
     </script>
 </body>

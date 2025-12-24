@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
+    <title>关于</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.544.0/dist/umd/lucide.min.js"></script>
     <style>
@@ -54,20 +54,20 @@
     </style>
 </head>
 <body class="antialiased">
-    <!-- Navigation -->
+    <!-- 导航栏 -->
     <header class="bg-white shadow-sm relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
                     <a href="index.html" class="text-black font-bold text-xl">Minimalist Blog</a>
                 </div>
-				<!-- Desktop Navigation -->
+				<!-- 桌面端导航 -->
                 <nav class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="nav-link text-gray-600 hover:text-black">Home</a>
-                    <a href="gallery.html" class="nav-link text-gray-600 hover:text-black">Gallery</a>
-                    <a href="about.html" class="nav-link active text-black hover:text-gray-600">About</a>
+                    <a href="index.html" class="nav-link text-gray-600 hover:text-black">首页</a>
+                    <a href="gallery.html" class="nav-link text-gray-600 hover:text-black">图库</a>
+                    <a href="about.html" class="nav-link active text-black hover:text-gray-600">关于</a>
                 </nav>
-				<!-- Mobile Menu Button -->
+				<!-- 移动端菜单按钮 -->
 				<div class="md:hidden flex items-center">
 				    <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-700 focus:outline-none">
 				        <i data-lucide="menu" class="h-6 w-6"></i>
@@ -75,29 +75,29 @@
 				</div>
             </div>
         </div>
-		<!-- Mobile Navigation -->
+		<!-- 移动端导航 -->
 		<div id="mobile-menu" class="hidden md:hidden bg-white shadow-md mobile-menu-enter mobile-menu">
 		    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-		        <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-black">Home</a>
-		        <a href="gallery.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-black">Gallery</a>
-		        <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-black hover:bg-gray-50">About</a>
+		        <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-black">首页</a>
+		        <a href="gallery.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-black">图库</a>
+		        <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-black hover:bg-gray-50">关于</a>
 		    </div>
 		</div>
     </header>
 
-    <!-- Main Content -->
+    <!-- 主要内容 -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div class="flex flex-col lg:flex-row gap-8">
-            <!-- Sidebar -->
+            <!-- 侧边栏 -->
             <aside class="w-full lg:w-1/3">
                 <div class="bg-white p-6 rounded-lg shadow-sm">
                     <div class="flex flex-col items-center">
-                        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/7d3fdf5c53f84b95aa8a0e3527af76aa~tplv-a9rns2rl98-image.image?rcl=20251222225753D0F7F6B3A8AEE7981537&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769007486&x-signature=%2F37b%2B0AQ2yJOtLhiJa1GCWJT8B0%3D" alt="Personal Avatar" class="w-32 h-32 rounded-full mb-4 cursor-pointer" onclick="openModal('https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/7d3fdf5c53f84b95aa8a0e3527af76aa~tplv-a9rns2rl98-image.image?rcl=20251222225753D0F7F6B3A8AEE7981537&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769007486&x-signature=%2F37b%2B0AQ2yJOtLhiJa1GCWJT8B0%3D')">
+                        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/7d3fdf5c53f84b95aa8a0e3527af76aa~tplv-a9rns2rl98-image.image?rcl=20251222225753D0F7F6B3A8AEE7981537&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769007486&x-signature=%2F37b%2B0AQ2yJOtLhiJa1GCWJT8B0%3D" alt="个人头像" class="w-32 h-32 rounded-full mb-4 cursor-pointer" onclick="openModal('https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/7d3fdf5c53f84b95aa8a0e3527af76aa~tplv-a9rns2rl98-image.image?rcl=20251222225753D0F7F6B3A8AEE7981537&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769007486&x-signature=%2F37b%2B0AQ2yJOtLhiJa1GCWJT8B0%3D')">
                         <h2 class="text-lg font-semibold text-gray-800">Jane Doe</h2>
-                        <p class="text-sm text-gray-500 mt-1">UX Designer & Writer</p>
+                        <p class="text-sm text-gray-500 mt-1">UX 设计师 & 作家</p>
                     </div>
                     <div class="mt-6">
-                        <h3 class="text-sm font-semibold text-gray-800 uppercase tracking-wide">Social</h3>
+                        <h3 class="text-sm font-semibold text-gray-800 uppercase tracking-wide">社交</h3>
                         <div class="mt-3 flex space-x-3">
                             <a href="social/twitter.html" class="text-gray-400 hover:text-gray-500">
                                 <i data-lucide="twitter"></i>
@@ -112,42 +112,42 @@
                     </div>
                 </div>
 
-                <!-- Links -->
+                <!-- 链接 -->
                 <div class="bg-white p-6 rounded-lg shadow-sm">
-                    <h3 class="text-lg font-semibold text-gray-900">Links</h3>
+                    <h3 class="text-lg font-semibold text-gray-900">链接</h3>
                     <ul class="mt-4 space-y-2">
-                        <li><a href="Links/Design Inspirations.html" class="text-sm text-gray-600 hover:text-black flex items-center"><i data-lucide="link" class="h-4 w-4 mr-2"></i> Design Inspirations</a></li>
-                        <li><a href="Links/UX Research Resources.html" class="text-sm text-gray-600 hover:text-black flex items-center"><i data-lucide="link" class="h-4 w-4 mr-2"></i> UX Research Resources</a></li>
-                        <li><a href="Links/Free Design Tools.html" class="text-sm text-gray-600 hover:text-black flex items-center"><i data-lucide="link" class="h-4 w-4 mr-2"></i> Free Design Tools</a></li>
-                        <li><a href="Links/My Favorite Books.html" class="text-sm text-gray-600 hover:text-black flex items-center"><i data-lucide="link" class="h-4 w-4 mr-2"></i> My Favorite Books</a></li>
-                        <li><a href="https://bei2.netlify.app/" class="text-sm text-gray-600 hover:text-black flex items-center"><i data-lucide="link" class="h-4 w-4 mr-2"></i> Friend's Designer Profile</a></li>
-                        <li><a href="https://zhangbei.netlify.app/" class="text-sm text-gray-600 hover:text-black flex items-center"><i data-lucide="link" class="h-4 w-4 mr-2"></i> Bei's Webpage 2.0</a></li>
-                        <li><a href="https://zbenglish.netlify.app/" class="text-sm text-gray-600 hover:text-black flex items-center"><i data-lucide="link" class="h-4 w-4 mr-2"></i> English Vocabulary Learning</a></li>
+                        <li><a href="Links/Design Inspirations.html" class="text-sm text-gray-600 hover:text-black flex items-center"><i data-lucide="link" class="h-4 w-4 mr-2"></i> 设计灵感</a></li>
+                        <li><a href="Links/UX Research Resources.html" class="text-sm text-gray-600 hover:text-black flex items-center"><i data-lucide="link" class="h-4 w-4 mr-2"></i> UX 研究资源</a></li>
+                        <li><a href="Links/Free Design Tools.html" class="text-sm text-gray-600 hover:text-black flex items-center"><i data-lucide="link" class="h-4 w-4 mr-2"></i> 免费设计工具</a></li>
+                        <li><a href="Links/My Favorite Books.html" class="text-sm text-gray-600 hover:text-black flex items-center"><i data-lucide="link" class="h-4 w-4 mr-2"></i> 我最爱的书籍</a></li>
+                        <li><a href="https://bei2.netlify.app/" class="text-sm text-gray-600 hover:text-black flex items-center"><i data-lucide="link" class="h-4 w-4 mr-2"></i> 友人设计师简章</a></li>
+                        <li><a href="https://zhangbei.netlify.app/" class="text-sm text-gray-600 hover:text-black flex items-center"><i data-lucide="link" class="h-4 w-4 mr-2"></i> 贝の网页2.0</a></li>
+                        <li><a href="https://zbenglish.netlify.app/" class="text-sm text-gray-600 hover:text-black flex items-center"><i data-lucide="link" class="h-4 w-4 mr-2"></i> 英语单词学习</a></li>
                     </ul>
                 </div>
             </aside>
 
-            <!-- About Content -->
+            <!-- 关于页面内容 -->
             <div class="w-full lg:w-2/3 bg-white p-8 rounded-lg shadow-sm">
-                <h1 class="text-3xl font-bold text-gray-900">About Me</h1>
+                <h1 class="text-3xl font-bold text-gray-900">关于我</h1>
                 <div class="mt-8 prose prose-gray max-w-none">
-                    <p>Hello, I'm Jane Doe, a passionate UX Designer and Writer. I'm enthusiastic about exploring the intersection of design and technology, and creating meaningful user experiences through my work.</p>
-                    <p>My design philosophy is "simple yet not simplistic". I believe that excellent design should be intuitive, functional, and able to solve practical problems. Throughout my career, I've had the privilege of collaborating with many outstanding teams and contributing to projects of all sizes.</p>
-                    <h2>My Story</h2>
-                    <p>My design journey began with my love for art and computer science. I studied interaction design in university and immediately immersed myself in the industry after graduation. Over the years, I've worked on projects spanning from e-commerce to healthcare, which has given me a profound understanding of the needs of different users.</p>
-                    <p>Beyond design, I also have a passion for writing. Through my blog, I aim to share my insights on design trends, user psychology, and the creative process. I believe that by sharing knowledge, we can grow together and drive the development of the industry.</p>
-                    <h2>Get in Touch</h2>
-                    <p>If you have any questions or would like to collaborate, feel free to reach out to me via the following channels:</p>
+                    <p>你好，我是 Jane Doe，一名充满激情的 UX 设计师和作家。我热衷于探索设计与技术的交叉领域，并通过我的工作创造有意义的用户体验。</p>
+                    <p>我的设计理念是简约而不简单。我相信，优秀的设计应当直观、实用，并且能够解决实际问题。在我的职业生涯中，我有幸与许多优秀的团队合作，为不同规模的项目贡献自己的力量。</p>
+                    <h2>我的经历</h2>
+                    <p>我的设计之路始于对艺术和计算机科学的热爱。大学期间我主修交互设计，毕业后便立即投身于这个行业。多年来，我参与了从电子商务到医疗健康等多个领域的项目，这让我对不同用户的需求有了深刻的理解。</p>
+                    <p>除了设计工作，我也热爱写作。通过我的博客，我希望分享自己对设计趋势、用户心理学和创意过程的见解。我相信，通过知识共享，我们能够共同成长，推动行业发展。</p>
+                    <h2>联系我</h2>
+                    <p>如果你有任何问题或想要合作，欢迎通过以下方式随时联系我：</p>
                     <ul>
-                        <li>Email: jane.doe@example.com</li>
-                        <li>LinkedIn: linkedin.com/in/janedoe</li>
+                        <li>电子邮件：jane.doe@example.com</li>
+                        <li>LinkedIn：linkedin.com/in/janedoe</li>
                     </ul>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
+    <!-- 页脚 -->
     <footer class="bg-white border-t border-gray-200 mt-12">
         <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
@@ -156,11 +156,11 @@
                 </div>
                 <div class="flex space-x-6">
                     <a href="privacy-policy.html" class="text-gray-400 hover:text-gray-500">
-                        <span class="sr-only">Privacy Policy</span>
+                        <span class="sr-only">隐私政策</span>
                         <i data-lucide="shield"></i>
                     </a>
                     <a href="terms-of-service.html" class="text-gray-400 hover:text-gray-500">
-                        <span class="sr-only">Terms of Service</span>
+                        <span class="sr-only">服务条款</span>
                         <i data-lucide="file-text"></i>
                     </a>
                 </div>
@@ -171,14 +171,14 @@
     <script>
         lucide.createIcons();
 		
-		// Mobile menu toggle
+		// 移动端菜单切换
 		const mobileMenuButton = document.getElementById('mobile-menu-button');
 		const mobileMenu = document.getElementById('mobile-menu');
 		if (mobileMenuButton && mobileMenu) {
 		    mobileMenuButton.addEventListener('click', () => {
 		        if (mobileMenu.classList.contains('hidden')) {
 		            mobileMenu.classList.remove('hidden');
-		            // Trigger reflow
+		            // 触发重排
 		            void mobileMenu.offsetWidth;
 		            mobileMenu.classList.add('mobile-menu-enter-active');
 					mobileMenuButton.classList.add('mobile-menu-button-active');
@@ -192,12 +192,13 @@
 		    });
 		}
 
+        // 打开图片弹窗
         function openModal(imageSrc) {
             const modal = document.createElement('div');
             modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50';
             modal.innerHTML = `
                 <div class="relative max-w-4xl max-h-[90vh]">
-                    <img src="${imageSrc}" alt="Enlarged Image" class="max-w-full max-h-[90vh] object-contain">
+                    <img src="${imageSrc}" alt="放大的图片" class="max-w-full max-h-[90vh] object-contain">
                     <button onclick="closeModal()" class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75">
                         <i data-lucide="x" class="h-6 w-6"></i>
                     </button>
@@ -208,6 +209,7 @@
             lucide.createIcons();
         }
 
+        // 关闭图片弹窗
         function closeModal() {
             const modal = document.querySelector('.fixed.inset-0.bg-black.bg-opacity-75');
             if (modal) {

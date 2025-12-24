@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>xx</title>
+    <title>A Beginner's Guide to UI/UX</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.544.0/dist/umd/lucide.min.js"></script>
     <style>
@@ -66,9 +66,9 @@
                 </div>
                 <!-- Desktop Navigation -->
                 <nav class="hidden md:flex items-center space-x-8">
-                    <a href="../index.html" class="nav-link text-gray-600 hover:text-black">Home</a>
-                    <a href="../gallery.html" class="nav-link text-gray-600 hover:text-black">Gallery</a>
-                    <a href="../about.html" class="nav-link text-gray-600 hover:text-black">About</a>
+                    <a href="../index.html" class="nav-link text-gray-600 hover:text-black">首页</a>
+                    <a href="../gallery.html" class="nav-link text-gray-600 hover:text-black">图库</a>
+                    <a href="../about.html" class="nav-link text-gray-600 hover:text-black">关于</a>
                 </nav>
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center">
@@ -81,9 +81,9 @@
         <!-- Mobile Navigation -->
         <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md mobile-menu-enter mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="../index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-black">Home</a>
-                <a href="../gallery.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-black">Gallery</a>
-                <a href="../about.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-black">About</a>
+                <a href="../index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-black">首页</a>
+                <a href="../gallery.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-black">图库</a>
+                <a href="../about.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-black">关于</a>
             </div>
         </div>
     </header>
@@ -146,7 +146,7 @@
                             <form id="comment-form" class="mt-4">
                                 <div class="flex items-center mb-3">
                                     <input type="checkbox" id="author-checkbox" class="mr-2 h-4 w-4 text-gray-900 border-gray-300 rounded focus:ring-gray-500">
-                                    <label for="author-checkbox" class="text-sm text-gray-600">I'm the author</label>
+                                    <label for="author-checkbox" class="text-sm text-gray-600">我是作者</label>
                                 </div>
                                 <input type="text" id="comment-author" class="w-full px-3 py-2 mb-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500" placeholder="Your name...">
                                 <textarea id="comment-input" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500" placeholder="Write your comment..." style="word-break: break-all;"></textarea>
@@ -305,7 +305,7 @@
                     <div id="reply-form-${comment.id}" class="hidden mt-3">
                         <div class="flex items-center mb-2">
                             <input type="checkbox" id="reply-author-checkbox-${comment.id}" class="mr-2 h-4 w-4 text-gray-900 border-gray-300 rounded focus:ring-gray-500">
-                            <label for="reply-author-checkbox-${comment.id}" class="text-xs text-gray-600">I'm the author</label>
+                            <label for="reply-author-checkbox-${comment.id}" class="text-xs text-gray-600">我是作者</label>
                         </div>
                         <input type="text" id="reply-author-${comment.id}" class="w-full px-3 py-2 mb-2 text-xs border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500" placeholder="Your name...">
                         <textarea id="reply-content-${comment.id}" rows="2" class="w-full px-3 py-2 text-xs border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500" placeholder="Write a reply..." style="word-break: break-all;"></textarea>

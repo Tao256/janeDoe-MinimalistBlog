@@ -1,12 +1,12 @@
-# janeDoe-MinimalistBlog
-a personal blog model
+# 极简风格博客网站
+个人博客网站模板
 
-This is a minimalist-style personal blog application built on the Web, developed entirely with a lightweight and modern tech stack. It relies primarily on Tailwind CSS for responsive layout, paired with the Lucide icon library to enhance the visual interaction system, supporting all usage scenarios on both desktop and mobile devices.
+这是一款基于 Web 构建的极简主义风格个人博客应用，整体采用轻量且现代的技术栈打造，核心依托 Tailwind CSS 实现响应式布局，搭配 Lucide 图标库完善视觉交互体系，适配桌面端与移动端全场景使用。
 
-The core functions of the application cover the comprehensive needs of a personal blog: it features a clear navigation system, providing fixed navigation entries such as Home, Gallery, and About on desktop; on mobile, it is designed with a collapsible animated menu that offers smooth transition effects when clicked to switch. The blog post page supports a three-dimensional display of author information, including an avatar (which can be viewed in a pop-up zoom-in window when clicked), name, occupation, and personal profile module. It also integrates a complete comment interaction system, supporting interactive operations such as comment display, likes, and replies (including reply form submission, reply content display, and reply likes).
+应用核心功能覆盖个人博客的全维度需求：具备清晰的导航体系，桌面端提供首页、图库、关于等固定导航入口，移动端设计折叠式动画菜单，点击切换时带有平滑的过渡效果；博文页面支持作者信息立体化展示，包含头像（点击可弹窗放大查看）、姓名、职业及个人简介模块，同时集成完整的评论互动体系，支持评论展示、点赞、回复（含回复表单提交、回复内容展示与回复点赞）等交互操作。
 
-The application also offers personalized theme switching capability, allowing free toggling between dark and light modes. It uses local storage to remember user preferences and adapts to the system's default color scheme. For social scenarios, exclusive-style social pages for platforms like GitHub and Instagram have been developed, highly reproducing the visual characteristics of the corresponding platforms (such as GitHub's dark background system and exclusive color scheme) and providing interaction buttons like Follow and Share.
+应用还具备个性化的主题切换能力，可自由切换深色  浅色模式，通过本地存储记忆用户偏好，同时适配系统默认配色方案；针对社交场景，开发了 GitHub、Instagram 等专属风格的社交页面，高度还原对应平台的视觉特征（如 GitHub 的深色背景体系、专属配色），并提供关注、分享等交互按钮。
 
-Visually adhering to the minimalist design concept, it constructs a concise visual framework with a light gray background and black-and-white primary colors. Elements such as blog post cards and navigation links are designed with hover interaction effects (card hover upward movement + shadow, gradual expansion of link underlines) to enhance operational feedback. The footer area integrates auxiliary links such as copyright information, privacy policy, and terms of service, paired with icons of a unified style, ensuring functional completeness and visual consistency.
+视觉层面遵循极简设计理念，以浅灰底色、黑白主色构建简洁视觉框架，博文卡片、导航链接等元素均设计有 hover 交互效果（卡片悬浮上移 + 阴影、链接下划线渐变展开），提升操作反馈感；页脚区域整合版权信息、隐私政策、服务条款等辅助链接，搭配统一风格的图标，保障功能完整性与视觉一致性。
 
-Overall, the application takes minimalist aesthetics as its core design principle, balancing functionality and interaction experience. It not only meets the core needs of personal blog post publishing and display but also creates a smooth-experience and consistent-style personal blog solution through features such as theme customization, social adaptation, and multi-device responsiveness.
+整体而言，该应用以极简美学为核心设计准则，兼顾功能性与交互体验，既满足个人博文发布、展示的核心诉求，又通过主题定制、社交适配、多端响应等特性，打造出体验流畅、风格统一的个人博客解决方案。

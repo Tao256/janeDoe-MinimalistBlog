@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Design Tools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.544.0/dist/umd/lucide.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+            }
+            .text-gradient {
+                @apply bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-teal-500;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="../index.html" class="text-2xl font-bold text-gradient">Free Design Tools</a>
+            <button id="theme-toggle" class="p-2 rounded-full text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors duration-300">
+                <i data-lucide="sun" class="h-6 w-6 block dark:hidden"></i>
+                <i data-lucide="moon" class="h-6 w-6 hidden dark:block"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-center">Powerful Tools, Zero Cost</h2>
+            <p class="text-lg text-center text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                Discover a collection of free design tools that rival their premium counterparts.
+            </p>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Tool Card 1 -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden card-hover">
+                <div class="p-6">
+                    <div class="bg-green-100 dark:bg-green-900 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4">
+                        <i data-lucide="palette" class="h-8 w-8 text-green-500 dark:text-green-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Graphic Design</h3>
+                    <ul class="text-gray-600 dark:text-gray-400 space-y-2 mb-4">
+                        <li class="flex items-center"><i data-lucide="check" class="h-4 w-4 mr-2 text-green-500"></i> Canva</li>
+                        <li class="flex items-center"><i data-lucide="check" class="h-4 w-4 mr-2 text-green-500"></i> GIMP</li>
+                        <li class="flex items-center"><i data-lucide="check" class="h-4 w-4 mr-2 text-green-500"></i> Inkscape</li>
+                        <li class="flex items-center"><i data-lucide="check" class="h-4 w-4 mr-2 text-green-500"></i> Vectr</li>
+                    </ul>
+                    <a href="#" class="text-green-500 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300 font-medium flex items-center">
+                        Explore Tools <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tool Card 2 -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden card-hover">
+                <div class="p-6">
+                    <div class="bg-teal-100 dark:bg-teal-900 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4">
+                        <i data-lucide="smartphone" class="h-8 w-8 text-teal-500 dark:text-teal-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">UI/UX Design</h3>
+                    <ul class="text-gray-600 dark:text-gray-400 space-y-2 mb-4">
+                        <li class="flex items-center"><i data-lucide="check" class="h-4 w-4 mr-2 text-green-500"></i> Figma (Free Tier)</li>
+                        <li class="flex items-center"><i data-lucide="check" class="h-4 w-4 mr-2 text-green-500"></i> Sketch (Free Trial)</li>
+                        <li class="flex items-center"><i data-lucide="check" class="h-4 w-4 mr-2 text-green-500"></i> Adobe XD (Free Tier)</li>
+                        <li class="flex items-center"><i data-lucide="check" class="h-4 w-4 mr-2 text-green-500"></i> Lunacy</li>
+                    </ul>
+                    <a href="#" class="text-green-500 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300 font-medium flex items-center">
+                        Explore Tools <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tool Card 3 -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden card-hover">
+                <div class="p-6">
+                    <div class="bg-cyan-100 dark:bg-cyan-900 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4">
+                        <i data-lucide="image" class="h-8 w-8 text-cyan-500 dark:text-cyan-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Image Editing</h3>
+                    <ul class="text-gray-600 dark:text-gray-400 space-y-2 mb-4">
+                        <li class="flex items-center"><i data-lucide="check" class="h-4 w-4 mr-2 text-green-500"></i> Pixlr</li>
+                        <li class="flex items-center"><i data-lucide="check" class="h-4 w-4 mr-2 text-green-500"></i> Fotor</li>
+                        <li class="flex items-center"><i data-lucide="check" class="h-4 w-4 mr-2 text-green-500"></i> BeFunky</li>
+                        <li class="flex items-center"><i data-lucide="check" class="h-4 w-4 mr-2 text-green-500"></i> PhotoScape X</li>
+                    </ul>
+                    <a href="#" class="text-green-500 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300 font-medium flex items-center">
+                        Explore Tools <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <section class="my-16">
+            <h2 class="text-2xl font-bold mb-8 text-center">Tool Comparisons</h2>
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="border-b border-gray-200 dark:border-gray-700">
+                            <th class="py-3 px-4 font-bold">Tool</th>
+                            <th class="py-3 px-4 font-bold">Best For</th>
+                            <th class="py-3 px-4 font-bold">Free Features</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-200 dark:border-gray-700">
+                            <td class="py-3 px-4 font-medium">Canva</td>
+                            <td class="py-3 px-4 text-gray-600 dark:text-gray-400">Social Media Graphics</td>
+                            <td class="py-3 px-4 text-gray-600 dark:text-gray-400">250,000+ templates, 100+ design types</td>
+                        </tr>
+                        <tr class="border-b border-gray-200 dark:border-gray-700">
+                            <td class="py-3 px-4 font-medium">Figma</td>
+                            <td class="py-3 px-4 text-gray-600 dark:text-gray-400">UI Design & Prototyping</td>
+                            <td class="py-3 px-4 text-gray-600 dark:text-gray-400">Unlimited files, 3 projects</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-medium">GIMP</td>
+                            <td class="py-3 px-4 text-gray-600 dark:text-gray-400">Advanced Image Editing</td>
+                            <td class="py-3 px-4 text-gray-600 dark:text-gray-400">All features, open-source</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white dark:bg-gray-800 mt-12 py-8">
+        <div class="container mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
+            <p>&copy; 2025 Free Design Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            themeToggle.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+                const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+                localStorage.setItem('theme', currentTheme);
+            });
+
+            // Initialize theme
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            }
+
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

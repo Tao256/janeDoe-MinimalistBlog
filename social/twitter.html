@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jane Doe (@janedoe) / Twitter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.544.0/dist/umd/lucide.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .twitter-bg {
+                background-color: #1d9bf0;
+            }
+            .twitter-hover:hover {
+                background-color: #f7f9f9;
+            }
+            .dark .twitter-hover:hover {
+                background-color: #1f2937;
+            }
+            .dark .tab-button.active {
+                color: #ffffff;
+                border-bottom-color: #1d9bf0;
+            }
+            .dark .tab-button:not(.active) {
+                color: #9ca3af;
+            }
+            .dark .tab-button:not(.active):hover {
+                color: #ffffff;
+            }
+            .dark .tweet-text {
+                color: #e5e7eb;
+            }
+            .dark .tweet-meta {
+                color: #9ca3af;
+            }
+            .dark .tweet-actions button {
+                transition: all 0.2s ease-in-out;
+            }
+            .dark .tweet-actions button:hover {
+                background-color: rgba(29, 155, 240, 0.1);
+                transform: scale(1.05);
+            }
+            .dark .tweet-actions .retweet:hover {
+                 background-color: rgba(16, 185, 129, 0.1);
+            }
+            .dark .tweet-actions .like:hover {
+                 background-color: rgba(239, 68, 68, 0.1);
+            }
+            .dark .link-preview {
+                background-color: #374151;
+                border-color: #4b5563;
+            }
+            .dark .link-preview:hover {
+                background-color: #4b5563;
+                border-color: #6b7280;
+            }
+            .dark .follow-active {
+                background-color: #374151;
+                color: #ffffff;
+            }
+            .dark .follow-active:hover {
+                background-color: #4b5563;
+            }
+            .dark .profile-card {
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            }
+            .dark .tweet-card {
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+            }
+            .dark .tweet-card:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
+            }
+            .dark .media-grid img {
+                transition: transform 0.3s ease, filter 0.3s ease;
+            }
+            .dark .media-grid img:hover {
+                transform: scale(1.02);
+                filter: brightness(1.1);
+            }
+            .dark .avatar-border {
+                border-color: #1f2937;
+            }
+            .dark .tab-indicator {
+                transition: all 0.3s ease;
+            }
+            .dark .theme-toggle-icon {
+                color: #ffffff;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <!-- Twitter Official Navbar -->
+    <nav class="sticky top-0 z-50 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 shadow-sm transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#1d9bf0]"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+						<h1 class="text-2xl font-bold">Twtter</h1>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="navbar-theme-toggle" class="p-2 rounded-full text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors duration-300">
+                        <i data-lucide="sun" class="h-6 w-6 block dark:hidden"></i>
+                        <i data-lucide="moon" class="h-6 w-6 hidden dark:block"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex flex-col lg:flex-row">
+        <!-- Left Sidebar (Desktop Only) -->
+        <div class="hidden lg:block w-64 h-screen sticky top-16 p-4 border-r border-gray-200 dark:border-gray-700">
+            <div class="space-y-6">
+                <nav class="space-y-2">
+                    <a href="#" class="flex items-center px-4 py-2 text-gray-700 dark:text-gray-300 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <i data-lucide="home" class="h-6 w-6 mr-3 text-[#1d9bf0]"></i>
+                        <span class="font-bold">Home</span>
+                    </a>
+                    <a href="#" class="flex items-center px-4 py-2 text-gray-700 dark:text-gray-300 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <i data-lucide="hashtag" class="h-6 w-6 mr-3"></i>
+                        <span class="font-bold">Explore</span>
+                    </a>
+                    <a href="#" class="flex items-center px-4 py-2 text-gray-700 dark:text-gray-300 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <i data-lucide="bell" class="h-6 w-6 mr-3"></i>
+                        <span class="font-bold">Notifications</span>
+                    </a>
+                    <a href="#" class="flex items-center px-4 py-2 text-gray-700 dark:text-gray-300 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <i data-lucide="mail" class="h-6 w-6 mr-3"></i>
+                        <span class="font-bold">Messages</span>
+                    </a>
+                    <a href="#" class="flex items-center px-4 py-2 text-gray-700 dark:text-gray-300 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <i data-lucide="bookmark" class="h-6 w-6 mr-3"></i>
+                        <span class="font-bold">Bookmarks</span>
+                    </a>
+                    <a href="#" class="flex items-center px-4 py-2 text-gray-700 dark:text-gray-300 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <i data-lucide="list" class="h-6 w-6 mr-3"></i>
+                        <span class="font-bold">Lists</span>
+                    </a>
+                    <a href="#" class="flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white rounded-full font-bold">
+                        <i data-lucide="user" class="h-6 w-6 mr-3"></i>
+                        <span>Profile</span>
+                    </a>
+                    <a href="#" class="flex items-center px-4 py-2 text-gray-700 dark:text-gray-300 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <i data-lucide="more-horizontal" class="h-6 w-6 mr-3"></i>
+                        <span class="font-bold">More</span>
+                    </a>
+                </nav>
+                <button class="w-full py-2.5 bg-[#1d9bf0] text-white rounded-full font-bold hover:bg-opacity-90 transition-colors duration-300">
+                    Post
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1">
+            <div class="bg-white dark:bg-gray-800 shadow-lg dark:profile-card transition-all duration-300">
+                <!-- Header -->
+                <div class="twitter-bg h-32 sm:h-48 relative">
+                    <div class="absolute bottom-0 left-0 p-4">
+                        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/7d3fdf5c53f84b95aa8a0e3527af76aa~tplv-a9rns2rl98-image.image?rcl=20251222225753D0F7F6B3A8AEE7981537&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769007486&x-signature=%2F37b%2B0AQ2yJOtLhiJa1GCWJT8B0%3D" alt="Jane Doe" class="w-20 sm:w-24 h-20 sm:h-24 rounded-full border-4 border-white dark:avatar-border">
+                    </div>
+                </div>
+                <!-- Profile Header -->
+                <div class="p-4 sm:p-6 border-b border-gray-200 dark:border-gray-700">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div>
+                            <h1 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Jane Doe</h1>
+                            <p class="text-gray-500 dark:text-gray-400">@janedoe</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button id="follow-button" class="twitter-bg text-white px-4 py-2 rounded-full font-medium hover:bg-opacity-90 transition-colors duration-300 dark:hover:bg-opacity-90 text-sm sm:text-base">Follow</button>
+                        </div>
+                    </div>
+                    <p class="mt-3 sm:mt-4 text-gray-800 dark:text-gray-200 text-sm sm:text-base leading-relaxed">UX Designer & Voice Interface Specialist. Exploring the future of human-computer interaction.</p>
+                    <div class="mt-3 sm:mt-4 flex flex-wrap items-center text-gray-500 dark:text-gray-400 text-xs sm:text-sm gap-y-2">
+                        <div class="flex items-center mr-4">
+                            <i data-lucide="link" class="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-1"></i>
+                            <span>janedoe.design</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="map-pin" class="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-1"></i>
+                            <span>San Francisco, CA</span>
+                        </div>
+                    </div>
+                    <div class="mt-3 sm:mt-4 flex items-center text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+                        <span class="font-semibold text-gray-900 dark:text-gray-100 mr-1">12.4K</span> followers
+                        <span class="mx-2">·</span>
+                        <span class="font-semibold text-gray-900 dark:text-gray-100 mr-1">286</span> following
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="border-b border-gray-200 dark:border-gray-700">
+                    <div class="flex">
+                        <button id="tweets-tab-button" class="tab-button active flex-1 py-4 text-center font-medium text-gray-900 dark:text-white border-b-2 dark:tab-indicator border-gray-900 dark:border-blue-400 transition-all duration-300">Tweets</button>
+                        <button id="media-tab-button" class="tab-button flex-1 py-4 text-center font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-white transition-all duration-300">Media</button>
+                        <button id="likes-tab-button" class="tab-button flex-1 py-4 text-center font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-white transition-all duration-300">Likes</button>
+                    </div>
+                </div>
+
+                <!-- Tweets -->
+                <div id="tweets-tab" class="dark:bg-gray-800">
+                    <!-- Tweet 1 -->
+                    <div class="p-3 sm:p-4 border-b border-gray-200 dark:border-gray-700 twitter-hover dark:tweet-card">
+                        <div class="flex items-start">
+                            <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/7d3fdf5c53f84b95aa8a0e3527af76aa~tplv-a9rns2rl98-image.image?rcl=20251222225753D0F7F6B3A8AEE7981537&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769007486&x-signature=%2F37b%2B0AQ2yJOtLhiJa1GCWJT8B0%3D" alt="Jane Doe" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full mr-3">
+                            <div class="flex-1">
+                                <div class="flex items-center flex-wrap">
+                                    <h3 class="font-semibold text-gray-900 dark:text-gray-100 text-sm sm:text-base">Jane Doe</h3>
+                                    <span class="text-gray-500 dark:text-gray-400 text-xs sm:text-sm ml-1">@janedoe</span>
+                                    <span class="text-gray-500 dark:text-gray-400 text-xs sm:text-sm ml-1">·</span>
+                                    <span class="text-gray-500 dark:text-gray-400 text-xs sm:text-sm ml-1">Dec 18</span>
+                                </div>
+                                <p class="mt-1 text-gray-900 dark:tweet-text text-sm sm:text-base leading-relaxed">Just published a new case study on designing voice interfaces for smart home devices. The key challenge? Making complex actions feel simple and intuitive. Check it out!</p>
+                                 <div class="mt-3 p-3 bg-gray-100 dark:link-preview rounded-lg border border-transparent dark:border-gray-600 transition-all duration-300 hover:shadow-md">
+                                    <p class="text-gray-500 dark:text-gray-400 text-xs sm:text-sm">janedoe.design/case-studies/voice-for-smart-homes</p>
+                                    <p class="font-semibold text-gray-900 dark:text-white mt-1 text-sm sm:text-base">Designing for Voice: A Smart Home Case Study</p>
+                                    <p class="text-gray-600 dark:text-gray-300 text-xs sm:text-sm mt-1">An in-depth look at creating natural and efficient voice interactions.</p>
+                                </div>
+                                <div class="mt-3 flex items-center justify-between text-gray-500 dark:tweet-meta tweet-actions">
+                                    <button class="flex items-center hover:text-blue-500 p-1.5 sm:p-2 rounded-full"><i data-lucide="message-circle" class="h-4 w-4 sm:h-5 sm:w-5 mr-1 sm:mr-2"></i> <span class="text-xs sm:text-sm">89</span></button>
+                                    <button class="flex items-center hover:text-green-500 retweet p-1.5 sm:p-2 rounded-full"><i data-lucide="repeat" class="h-4 w-4 sm:h-5 sm:w-5 mr-1 sm:mr-2"></i> <span class="text-xs sm:text-sm">43</span></button>
+                                    <button class="flex items-center hover:text-red-500 like p-1.5 sm:p-2 rounded-full"><i data-lucide="heart" class="h-4 w-4 sm:h-5 sm:w-5 mr-1 sm:mr-2"></i> <span class="text-xs sm:text-sm">256</span></button>
+                                    <button class="flex items-center hover:text-blue-500 p-1.5 sm:p-2 rounded-full"><i data-lucide="upload" class="h-4 w-4 sm:h-5 sm:w-5"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tweet 2 -->
+                    <div class="p-4 border-b border-gray-200 dark:border-gray-700 twitter-hover dark:tweet-card">
+                        <div class="flex items-start">
+                            <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/7d3fdf5c53f84b95aa8a0e3527af76aa~tplv-a9rns2rl98-image.image?rcl=20251222225753D0F7F6B3A8AEE7981537&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769007486&x-signature=%2F37b%2B0AQ2yJOtLhiJa1GCWJT8B0%3D" alt="Jane Doe" class="w-10 h-10 rounded-full mr-3">
+                            <div class="flex-1">
+                                <div class="flex items-center">
+                                    <h3 class="font-semibold text-gray-900 dark:text-gray-100">Jane Doe</h3>
+                                    <span class="text-gray-500 dark:text-gray-400 text-sm ml-1">@janedoe</span>
+                                    <span class="text-gray-500 dark:text-gray-400 text-sm ml-1">·</span>
+                                    <span class="text-gray-500 dark:text-gray-400 text-sm ml-1">Dec 17</span>
+                                </div>
+                                <p class="mt-1 text-gray-900 dark:tweet-text">Listening to @designmatters' new podcast episode on the future of voice UX. So many great insights from industry leaders!</p>
+                                <div class="mt-3 flex items-center justify-between text-gray-500 dark:tweet-meta tweet-actions">
+                                    <button class="flex items-center hover:text-blue-500 p-2 rounded-full"><i data-lucide="message-circle" class="h-5 w-5 mr-2"></i> 12</button>
+                                    <button class="flex items-center hover:text-green-500 retweet p-2 rounded-full"><i data-lucide="repeat" class="h-5 w-5 mr-2"></i> 5</button>
+                                    <button class="flex items-center hover:text-red-500 like p-2 rounded-full"><i data-lucide="heart" class="h-5 w-5 mr-2"></i> 48</button>
+                                    <button class="flex items-center hover:text-blue-500 p-2 rounded-full"><i data-lucide="upload" class="h-5 w-5 mr-2"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tweet 3 -->
+                    <div class="p-4 border-b border-gray-200 dark:border-gray-700 twitter-hover dark:tweet-card">
+                        <div class="flex items-start">
+                            <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/7d3fdf5c53f84b95aa8a0e3527af76aa~tplv-a9rns2rl98-image.image?rcl=20251222225753D0F7F6B3A8AEE7981537&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769007486&x-signature=%2F37b%2B0AQ2yJOtLhiJa1GCWJT8B0%3D" alt="Jane Doe" class="w-10 h-10 rounded-full mr-3">
+                            <div class="flex-1">
+                                <div class="flex items-center">
+                                    <h3 class="font-semibold text-gray-900 dark:text-gray-100">Jane Doe</h3>
+                                    <span class="text-gray-500 dark:text-gray-400 text-sm ml-1">@janedoe</span>
+                                    <span class="text-gray-500 dark:text-gray-400 text-sm ml-1">·</span>
+                                    <span class="text-gray-500 dark:text-gray-400 text-sm ml-1">Dec 15</span>
+                                </div>
+                                <p class="mt-1 text-gray-900 dark:tweet-text">Working on a new side project: a voice-powered note-taking app. The goal is to capture thoughts faster than you can type. Early prototype is promising! #VoiceFirst #UX</p>
+                                <div class="mt-3 grid grid-cols-2 gap-2">
+                                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Voice Interface" class="rounded-lg aspect-video object-cover">
+                                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Design Workspace" class="rounded-lg aspect-video object-cover">
+                                </div>
+                                <div class="mt-3 flex items-center justify-between text-gray-500 dark:tweet-meta tweet-actions">
+                                    <button class="flex items-center hover:text-blue-500 p-2 rounded-full"><i data-lucide="message-circle" class="h-5 w-5 mr-2"></i> 103</button>
+                                    <button class="flex items-center hover:text-green-500 retweet p-2 rounded-full"><i data-lucide="repeat" class="h-5 w-5 mr-2"></i> 78</button>
+                                    <button class="flex items-center hover:text-red-500 like p-2 rounded-full"><i data-lucide="heart" class="h-5 w-5 mr-2"></i> 342</button>
+                                    <button class="flex items-center hover:text-blue-500 p-2 rounded-full"><i data-lucide="upload" class="h-5 w-5 mr-2"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Media -->
+                <div id="media-tab" class="hidden dark:bg-gray-800">
+                    <div class="p-4 grid grid-cols-3 gap-2 media-grid">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Voice Interface" class="rounded-lg aspect-square object-cover">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Design Workspace" class="rounded-lg aspect-square object-cover">
+                        <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Minimalist Design" class="rounded-lg aspect-square object-cover">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Books" class="rounded-lg aspect-square object-cover">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Coffee and Laptop" class="rounded-lg aspect-square object-cover">
+                    </div>
+                </div>
+
+                <!-- Likes -->
+                <div id="likes-tab" class="hidden divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-800">
+                    <!-- Liked Tweet 1 -->
+                    <div class="p-4 dark:bg-gray-800 twitter-hover dark:tweet-card">
+                        <div class="flex items-start">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" class="w-10 h-10 rounded-full mr-3">
+                            <div class="flex-1">
+                                <div class="flex items-center">
+                                    <h3 class="font-semibold text-gray-900 dark:text-gray-100">UX Collective</h3>
+                                    <span class="text-gray-500 dark:text-gray-400 text-sm ml-1">@uxcollective</span>
+                                    <span class="text-gray-500 dark:text-gray-400 text-sm ml-1">·</span>
+                                    <span class="text-gray-500 dark:text-gray-400 text-sm ml-1">Dec 17</span>
+                                </div>
+                                <p class="mt-1 text-gray-900 dark:tweet-text">The best designs are the ones that go unnoticed. They seamlessly blend into the background and let the user's task take center stage.</p>
+                                <div class="mt-3 flex items-center justify-between text-gray-500 dark:tweet-meta tweet-actions">
+                                    <button class="flex items-center hover:text-blue-500 p-2 rounded-full"><i data-lucide="message-circle" class="h-5 w-5 mr-2"></i> 156</button>
+                                    <button class="flex items-center hover:text-green-500 retweet p-2 rounded-full"><i data-lucide="repeat" class="h-5 w-5 mr-2"></i> 43</button>
+                                    <button class="flex items-center text-red-500 like p-2 rounded-full"><i data-lucide="heart" class="h-5 w-5 mr-2"></i> 789</button>
+                                    <button class="flex items-center hover:text-blue-500 p-2 rounded-full"><i data-lucide="upload" class="h-5 w-5 mr-2"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Liked Tweet 2 -->
+                    <div class="p-4 dark:bg-gray-800 twitter-hover dark:tweet-card">
+                        <div class="flex items-start">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="w-10 h-10 rounded-full mr-3">
+                            <div class="flex-1">
+                                <div class="flex items-center">
+                                    <h3 class="font-semibold text-gray-900 dark:text-gray-100">Design Matters</h3>
+                                    <span class="text-gray-500 dark:text-gray-400 text-sm ml-1">@designmatters</span>
+                                    <span class="text-gray-500 dark:text-gray-400 text-sm ml-1">·</span>
+                                    <span class="text-gray-500 dark:text-gray-400 text-sm ml-1">Dec 16</span>
+                                </div>
+                                <p class="mt-1 text-gray-900 dark:tweet-text">Just launched our new podcast episode with @janedoe discussing the future of voice interfaces. Check it out!</p>
+                                 <div class="mt-3 p-3 bg-gray-100 dark:link-preview rounded-lg border border-transparent dark:border-gray-600 transition-all duration-300 hover:shadow-md">
+                                    <p class="text-gray-500 dark:text-gray-400 text-sm">designmatters.fm/ep123</p>
+                                    <p class="font-semibold text-gray-900 dark:text-white mt-1">The Future of Voice</p>
+                                    <p class="text-gray-600 dark:text-gray-300 text-sm mt-1">A deep dive into how voice technology is shaping the future of UX.</p>
+                                </div>
+                                <div class="mt-3 flex items-center justify-between text-gray-500 dark:tweet-meta tweet-actions">
+                                    <button class="flex items-center hover:text-blue-500 p-2 rounded-full"><i data-lucide="message-circle" class="h-5 w-5 mr-2"></i> 89</button>
+                                    <button class="flex items-center hover:text-green-500 retweet p-2 rounded-full"><i data-lucide="repeat" class="h-5 w-5 mr-2"></i> 27</button>
+                                    <button class="flex items-center text-red-500 like p-2 rounded-full"><i data-lucide="heart" class="h-5 w-5 mr-2"></i> 452</button>
+                                    <button class="flex items-center hover:text-blue-500 p-2 rounded-full"><i data-lucide="upload" class="h-5 w-5 mr-2"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize theme on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check for saved theme preference or use system preference
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.documentElement.classList.add('dark');
+            }
+
+            // Theme toggle functionality
+            const themeToggle = document.getElementById('navbar-theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    document.documentElement.classList.toggle('dark');
+                    const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+                    localStorage.setItem('theme', currentTheme);
+                });
+            }
+
+            // Initialize Lucide icons
+            lucide.createIcons();
+
+            // Follow button functionality
+            const followButton = document.getElementById('follow-button');
+            if (followButton) {
+                followButton.addEventListener('click', function() {
+                    if (followButton.textContent.trim() === 'Follow') {
+                        followButton.textContent = 'Following';
+                        followButton.classList.remove('twitter-bg', 'hover:bg-opacity-90', 'dark:hover:bg-opacity-90');
+                        followButton.classList.add('bg-gray-200', 'text-gray-900', 'hover:bg-gray-300', 'dark:follow-active', 'dark:hover:bg-gray-600');
+                    } else {
+                        followButton.textContent = 'Follow';
+                        followButton.classList.add('twitter-bg', 'hover:bg-opacity-90', 'dark:hover:bg-opacity-90');
+                        followButton.classList.remove('bg-gray-200', 'text-gray-900', 'hover:bg-gray-300', 'dark:follow-active', 'dark:hover:bg-gray-600');
+                    }
+                });
+            }
+
+            // Tab functionality
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabs = {
+                'tweets-tab-button': document.getElementById('tweets-tab'),
+                'media-tab-button': document.getElementById('media-tab'),
+                'likes-tab-button': document.getElementById('likes-tab')
+            };
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active styles from all buttons and hide all tabs
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('active', 'text-gray-900', 'border-b-2', 'border-gray-900', 'dark:border-blue-400');
+                        btn.classList.add('text-gray-500', 'dark:text-gray-400');
+                    });
+                    Object.values(tabs).forEach(tab => {
+                        if (tab) tab.classList.add('hidden');
+                    });
+
+                    // Activate clicked button and show corresponding tab
+                    button.classList.add('active', 'text-gray-900', 'border-b-2', 'border-gray-900', 'dark:border-blue-400');
+                    button.classList.remove('text-gray-500', 'dark:text-gray-400');
+                    const tabId = button.id.replace('-button', '');
+                    const tabToShow = document.getElementById(tabId);
+                    if (tabToShow) {
+                        tabToShow.classList.remove('hidden');
+                    }
+                });
+            });
+
+            // Tweet action button functionality
+            const tweetActionButtons = document.querySelectorAll('.tweet-actions button');
+            tweetActionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const isLikeButton = this.classList.contains('like');
+                    if (isLikeButton) {
+                        this.classList.toggle('text-red-500');
+                        const icon = this.querySelector('i');
+                        if (this.classList.contains('text-red-500')) {
+                            icon.setAttribute('fill', 'currentColor');
+                        } else {
+                            icon.removeAttribute('fill');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

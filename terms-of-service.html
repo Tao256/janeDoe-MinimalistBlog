@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.544.0/dist/umd/lucide.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            font-family: 'Inter', sans-serif;
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #000;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+		.mobile-menu-enter {
+		    opacity: 0;
+		    transform: translateY(-10px);
+		}
+		.mobile-menu-enter-active {
+		    opacity: 1;
+		    transform: translateY(0);
+		    transition: opacity 0.3s ease, transform 0.3s ease;
+		}
+		.mobile-menu {
+		    position: absolute;
+		    top: 100%;
+		    left: 0;
+		    right: 0;
+		    z-index: 50;
+		}
+		.mobile-menu-button-active .lucide-menu {
+		    transform: rotate(90deg);
+		}
+		.lucide-menu {
+		    transition: transform 0.3s ease;
+		}
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Navigation -->
+    <header class="bg-white shadow-sm relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-black font-bold text-xl">Minimalist Blog</a>
+                </div>
+				<!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-600 hover:text-black">Home</a>
+                    <a href="gallery.html" class="nav-link text-gray-600 hover:text-black">Gallery</a>
+                    <a href="about.html" class="nav-link text-gray-600 hover:text-black">About</a>
+                </nav>
+				<!-- Mobile Menu Button -->
+				<div class="md:hidden flex items-center">
+				    <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-700 focus:outline-none">
+				        <i data-lucide="menu" class="h-6 w-6"></i>
+				    </button>
+				</div>
+            </div>
+        </div>
+		<!-- Mobile Navigation -->
+		<div id="mobile-menu" class="hidden md:hidden bg-white shadow-md mobile-menu-enter mobile-menu">
+		    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+		        <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-black">Home</a>
+		        <a href="gallery.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-black">Gallery</a>
+		        <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-black">About</a>
+		    </div>
+		</div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <article class="bg-white p-6 md:p-8 rounded-lg shadow-sm">
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 md:mb-6">Terms of Service</h1>
+            <div class="prose prose-gray max-w-none">
+                <p class="text-gray-500 mb-6 md:mb-8">Last updated: January 1, 2025</p>
+
+                <p class="leading-relaxed">Welcome to our website. By accessing or using our website, you agree to be bound by the following Terms of Service.</p>
+
+                <h2 class="text-xl md:text-2xl font-semibold mt-8 mb-4">License to Use</h2>
+                <p class="leading-relaxed">Subject to these Terms, we grant you a personal, non-transferable, non-exclusive license to access and use our website.</p>
+
+                <h2>User Conduct</h2>
+                <p>You agree not to:</p>
+                <ul>
+                    <li>Use this website for any illegal purpose.</li>
+                    <li>Interfere with or disrupt the security or network of this website.</li>
+                    <li>Upload or distribute any viruses, malware, or other harmful content.</li>
+                    <li>Infringe upon others' intellectual property rights or other rights.</li>
+                    <li>Post, upload, or share any defamatory, obscene, harassing, or other illegal content.</li>
+                </ul>
+
+                <h2>Content</h2>
+                <p>All content on our website, including but not limited to text, images, graphics, logos, icons, buttons, audio, and video clips, is the property of us or our licensors and is protected by copyright, trademark, and other intellectual property laws.</p>
+                <p>You may view and download content from our website for personal and non-commercial purposes, provided that you retain all original copyright and other proprietary notices.</p>
+
+                <h2>Comments and Interactions</h2>
+                <p>We may provide areas that allow users to post comments or other content. Your use of these areas is subject to the following rules:</p>
+                <ul>
+                    <li>You are responsible for the content you post.</li>
+                    <li>You grant us a perpetual, irrevocable, worldwide license to use, copy, modify, adapt, publish, and display your content.</li>
+                    <li>We reserve the right to remove any content at our sole discretion.</li>
+                </ul>
+
+                <h2>Disclaimer</h2>
+                <p>Our website is provided on an "as is" and "as available" basis, without any warranties of any kind, either express or implied. To the maximum extent permitted by law, we make no warranties, including but not limited to implied warranties of merchantability, fitness for a particular purpose, and non-infringement.</p>
+
+                <h2>Limitation of Liability</h2>
+                <p>Under no circumstances shall we or our directors, employees, partners, or suppliers be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or in connection with the use or inability to use our website.</p>
+
+                <h2>Indemnification</h2>
+                <p>You agree to indemnify, defend, and hold us harmless from and against any and all claims, damages, losses, liabilities, costs, and expenses (including reasonable attorney's fees and costs) arising out of your use of this website or your violation of these Terms.</p>
+
+                <h2>Modifications to These Terms</h2>
+                <p>We may modify these Terms from time to time. We will post the revised Terms on this page. Your continued use of our website constitutes acceptance of the revised Terms.</p>
+
+                <h2>Governing Law</h2>
+                <p>These Terms are governed by the laws of your jurisdiction, without regard to conflict of law provisions.</p>
+
+                <h2>Contact Us</h2>
+                <p>If you have any questions about these Terms of Service, please contact us at any time.</p>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-12">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-sm text-gray-500">© 2025 Minimalist Blog. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="privacy-policy.html" class="text-gray-400 hover:text-gray-500">
+                        <span class="sr-only">Privacy Policy</span>
+                        <i data-lucide="shield"></i>
+                    </a>
+                    <a href="terms-of-service.html" class="text-gray-400 hover:text-gray-500">
+                        <span class="sr-only">Terms of Service</span>
+                        <i data-lucide="file-text"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+		
+		// Mobile menu toggle
+		const mobileMenuButton = document.getElementById('mobile-menu-button');
+		const mobileMenu = document.getElementById('mobile-menu');
+		if (mobileMenuButton && mobileMenu) {
+		    mobileMenuButton.addEventListener('click', () => {
+		        if (mobileMenu.classList.contains('hidden')) {
+		            mobileMenu.classList.remove('hidden');
+		            // Trigger reflow
+		            void mobileMenu.offsetWidth;
+		            mobileMenu.classList.add('mobile-menu-enter-active');
+					mobileMenuButton.classList.add('mobile-menu-button-active');
+		        } else {
+		            mobileMenu.classList.remove('mobile-menu-enter-active');
+					mobileMenuButton.classList.remove('mobile-menu-button-active');
+		            setTimeout(() => {
+		                mobileMenu.classList.add('hidden');
+		            }, 300);
+		        }
+		    });
+		}
+    </script>
+</body>
+</html>

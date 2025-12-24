@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.544.0/dist/umd/lucide.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            font-family: 'Inter', sans-serif;
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #000;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        .gallery-image {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .gallery-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        /* 瀑布流布局优化：确保图片容器不跨列断裂 */
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem; /* 与gap保持一致，优化视觉间距 */
+        }
+		.mobile-menu-enter {
+		    opacity: 0;
+		    transform: translateY(-10px);
+		}
+		.mobile-menu-enter-active {
+		    opacity: 1;
+		    transform: translateY(0);
+		    transition: opacity 0.3s ease, transform 0.3s ease;
+		}
+		.mobile-menu {
+		    position: absolute;
+		    top: 100%;
+		    left: 0;
+		    right: 0;
+		    z-index: 50;
+		}
+		.mobile-menu-button-active .lucide-menu {
+		    transform: rotate(90deg);
+		}
+		.lucide-menu {
+		    transition: transform 0.3s ease;
+		}
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Navigation - 整合移动端导航 -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-black font-bold text-xl">Minimalist Blog</a>
+                </div>
+                <!-- 桌面端导航 - 仅大屏显示 -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-600 hover:text-black">Home</a>
+                    <a href="gallery.html" class="nav-link active text-black hover:text-gray-600">Gallery</a>
+                    <a href="about.html" class="nav-link text-gray-600 hover:text-black">About</a>
+                </nav>
+                <!-- 移动端菜单按钮 - 仅小屏显示 -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-700 focus:outline-none">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- 移动端导航菜单 - 仅小屏显示 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md mobile-menu-enter mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-black">Home</a>
+                <a href="gallery.html" class="block px-3 py-2 rounded-md text-base font-medium text-black hover:bg-gray-50">Gallery</a>
+                <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-black">About</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content - 移动端优先布局 + 保留电脑端原布局 -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- 移动端：侧边栏在上，图库在下；电脑端：恢复原左右布局（侧边栏左，图库右） -->
+        <div class="flex flex-col gap-8 lg:flex-row">
+            <!-- Sidebar - 移动端占满宽，电脑端1/3宽度（保留原左侧布局） -->
+            <aside class="w-full lg:w-1/3">
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <div class="flex flex-col items-center">
+                        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/7d3fdf5c53f84b95aa8a0e3527af76aa~tplv-a9rns2rl98-image.image?rcl=20251222225753D0F7F6B3A8AEE7981537&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769007486&x-signature=%2F37b%2B0AQ2yJOtLhiJa1GCWJT8B0%3D" alt="Personal Avatar" class="w-32 h-32 rounded-full mb-4 cursor-pointer" onclick="openModal('https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/7d3fdf5c53f84b95aa8a0e3527af76aa~tplv-a9rns2rl98-image.image?rcl=20251222225753D0F7F6B3A8AEE7981537&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769007486&x-signature=%2F37b%2B0AQ2yJOtLhiJa1GCWJT8B0%3D')">
+                        <h2 class="text-lg font-semibold text-gray-800">Jane Doe</h2>
+                        <p class="text-sm text-gray-500 mt-1">UX Designer & Writer</p>
+                    </div>
+                    <div class="mt-6">
+                        <h3 class="text-sm font-semibold text-gray-800 uppercase tracking-wide">About Me</h3>
+                        <p class="mt-2 text-sm text-gray-600">
+                            Exploring the intersection of design and technology through writing and creative projects.
+                        </p>
+                    </div>
+                    <div class="mt-6">
+                        <h3 class="text-sm font-semibold text-gray-800 uppercase tracking-wide">Social</h3>
+                        <div class="mt-3 flex space-x-3">
+                            <a href="social/twitter.html" class="text-gray-400 hover:text-gray-500">
+                                <i data-lucide="twitter"></i>
+                            </a>
+                            <a href="social/instagram.html" class="text-gray-400 hover:text-gray-500">
+                                <i data-lucide="instagram"></i>
+                            </a>
+                            <a href="social/github.html" class="text-gray-400 hover:text-gray-500">
+                                <i data-lucide="github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <h3 class="text-sm font-semibold text-gray-800 uppercase tracking-wide">Gallery Type</h3>
+                        <div class="mt-4 flex items-center justify-center gap-4">
+                            <span class="text-sm text-gray-600">Life Photos</span>
+                            <label for="gallery-toggle" class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="gallery-toggle" class="sr-only peer">
+                                <div class="w-14 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-gray-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-gray-700"></div>
+                            </label>
+                            <span class="text-sm text-gray-600">Art Photos</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Gallery - 移动端默认2列（满足至少2张），响应式优化，保留瀑布流 -->
+            <div id="gallery-container" class="w-full lg:w-2/3 columns-2 sm:columns-2 md:columns-3 lg:columns-3 gap-6">
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-12">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-sm text-gray-500">© 2025 Minimalist Blog. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="privacy-policy.html" class="text-gray-400 hover:text-gray-500">
+                        <span class="sr-only">Privacy Policy</span>
+                        <i data-lucide="shield"></i>
+                    </a>
+                    <a href="terms-of-service.html" class="text-gray-400 hover:text-gray-500">
+                        <span class="sr-only">Terms of Service</span>
+                        <i data-lucide="file-text"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // 移动端菜单切换逻辑
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.remove('hidden');
+                    // Trigger reflow
+                    void mobileMenu.offsetWidth;
+                    mobileMenu.classList.add('mobile-menu-enter-active');
+        			mobileMenuButton.classList.add('mobile-menu-button-active');
+                } else {
+                    mobileMenu.classList.remove('mobile-menu-enter-active');
+        			mobileMenuButton.classList.remove('mobile-menu-button-active');
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
+                }
+            });
+        }
+
+        function openModal(imageSrc) {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="relative max-w-4xl max-h-[90vh]">
+                    <img src="${imageSrc}" alt="Enlarged Image" class="max-w-full max-h-[90vh] object-contain">
+                    <button onclick="closeModal()" class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75">
+                        <i data-lucide="x" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+
+        function closeModal() {
+            const modal = document.querySelector('.fixed.inset-0.bg-black.bg-opacity-75');
+            if (modal) {
+                document.body.removeChild(modal);
+                document.body.style.overflow = '';
+            }
+        }
+
+        const lifeImages = [
+            { src: 'https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/59486871721e4702a2bf786b0772f925~tplv-a9rns2rl98-image.image?rcl=202512222319420FE19C8811138FAF76B0&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769008832&x-signature=HNT4zXnYtpCJ68xKn5%2Fyd4lqiBM%3D', alt: 'Mountain Landscape' },
+            { src: 'https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/70b3346c953141d1a8e47b8cc41e1e42~tplv-a9rns2rl98-image.image?rcl=202512222319420FE19C8811138FAF76B0&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769008832&x-signature=hiKEOvoNVe5zh%2F7jjGBvd5f%2BDw8%3D', alt: 'Rainy City Street' },
+            { src: 'https://p3-doubao-search-sign.byteimg.com/labis/82140b0586b4f1dd77df993e68937480~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781972809&x-signature=BqPObhiQy%2BsxRtAVm1Qq2FPKhn4%3D', alt: 'Foggy Forest' },
+            { src: 'https://p3-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/1265741825922433026~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781972809&x-signature=ZJS%2BA%2FYPRMUcKJQPFTFJeS%2Fwjf8%3D', alt: 'Urban Architecture' },
+			{ src: 'https://free.picui.cn/free/2025/12/10/6938e376975b4.jpg', alt: 'Modern Decor' },
+			{ src: 'https://p3-doubao-search-sign.byteimg.com/labis/82140b0586b4f1dd77df993e68937480~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781972809&x-signature=BqPObhiQy%2BsxRtAVm1Qq2FPKhn4%3D', alt: 'Foggy Forest' },
+            { src: 'https://p3-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/1265741825922433026~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781972809&x-signature=ZJS%2BA%2FYPRMUcKJQPFTFJeS%2Fwjf8%3D', alt: 'Urban Architecture' },
+			{ src: 'https://free.picui.cn/free/2025/12/10/6938e336697e1.jpg', alt: 'Chess Set' },
+			{ src: 'https://free.picui.cn/free/2025/12/10/6938e37687d45.jpg', alt: 'Abstract Pattern' },
+        ];
+        
+        const artImages = [
+            { src: 'https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/9244eb4542794ad48bdfea1718999b6e~tplv-a9rns2rl98-image.image?rcl=202512222319420FE19C8811138FAF76B0&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769008831&x-signature=3%2FLhGOqrEoVHdWICLjNpZKYeQ%2B0%3D', alt: 'Minimalist Flower' },
+            { src: 'https://p3-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/1070337323836899482~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781972809&x-signature=j%2Bk9G2xDMKRhV82tJGcfV9D35cI%3D', alt: 'Minimalist Architecture' },
+            { src: 'https://p3-doubao-search-sign.byteimg.com/mosaic-legacy/289500047e5665a16406~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781972809&x-signature=by0fhIuZ4AKx6hqd5n2Ub2POaZ0%3D', alt: 'Portrait' },
+            { src: 'https://p11-doubao-search-sign.byteimg.com/pgc-image/e27524db31684767804dd7124feb2c4d~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1781972809&x-signature=keCHoS1iPqvPfUTwOXqPeOyALvA%3D', alt: 'Minimalist Silhouette' },
+            { src: 'https://free.picui.cn/free/2025/12/10/6938e3365aca4.png', alt: 'Coconut Illustration' },
+            { src: 'https://free.picui.cn/free/2025/12/10/6938e3359dc51.jpg', alt: 'Arturo Painting' },
+        ];
+
+        const galleryContainer = document.getElementById('gallery-container');
+        const galleryToggle = document.getElementById('gallery-toggle');
+
+        let currentGallery = 'life';
+
+        function renderGallery(images) {
+            galleryContainer.style.opacity = '0';
+            galleryContainer.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                const fragment = document.createDocumentFragment();
+                images.forEach(image => {
+                    // 新增gallery-item类，强化瀑布流布局稳定性
+                    const imageElement = document.createElement('div');
+                    imageElement.className = 'gallery-item gallery-image rounded-lg overflow-hidden shadow-md transform transition-all duration-500 ease-out opacity-0 translate-y-4';
+                    imageElement.innerHTML = `<img src="${image.src}" alt="${image.alt}" class="w-full h-auto cursor-pointer object-cover" data-image-src="${image.src}">`;
+                    fragment.appendChild(imageElement);
+                });
+                galleryContainer.innerHTML = '';
+                galleryContainer.appendChild(fragment);
+                
+                const newImages = galleryContainer.querySelectorAll('img');
+                newImages.forEach(img => {
+                    img.addEventListener('click', () => {
+                        openModal(img.dataset.imageSrc);
+                    });
+                });
+
+                galleryContainer.style.opacity = '1';
+                galleryContainer.style.transform = 'translateY(0)';
+                
+                const newImageElements = galleryContainer.querySelectorAll('.gallery-image');
+                newImageElements.forEach((el, index) => {
+                    setTimeout(() => {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }, index * 100);
+                });
+            }, 300);
+        }
+
+        galleryToggle.addEventListener('change', () => {
+            currentGallery = galleryToggle.checked ? 'art' : 'life';
+            renderGallery(currentGallery === 'life' ? lifeImages : artImages);
+        });
+
+        // Initial render
+        renderGallery(lifeImages);
+    </script>
+</body>
+</html>

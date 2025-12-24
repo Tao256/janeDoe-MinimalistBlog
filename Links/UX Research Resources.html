@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UX Research Resources</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.544.0/dist/umd/lucide.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+            }
+            .text-gradient {
+                @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-500;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="../index.html" class="text-2xl font-bold text-gradient">UX Research Resources</a>
+            <button id="theme-toggle" class="p-2 rounded-full text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors duration-300">
+                <i data-lucide="sun" class="h-6 w-6 block dark:hidden"></i>
+                <i data-lucide="moon" class="h-6 w-6 hidden dark:block"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-center">Elevate Your Research Game</h2>
+            <p class="text-lg text-center text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                A comprehensive list of tools, methodologies, and resources to help you conduct better UX research.
+            </p>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Resource Card 1 -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden card-hover">
+                <div class="p-6">
+                    <div class="bg-blue-100 dark:bg-blue-900 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4">
+                        <i data-lucide="users" class="h-8 w-8 text-blue-500 dark:text-blue-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">User Testing Platforms</h3>
+                    <ul class="text-gray-600 dark:text-gray-400 space-y-2 mb-4">
+                        <li class="flex items-center"><i data-lucide="check" class="h-4 w-4 mr-2 text-green-500"></i> UserTesting</li>
+                        <li class="flex items-center"><i data-lucide="check" class="h-4 w-4 mr-2 text-green-500"></i> Lookback</li>
+                        <li class="flex items-center"><i data-lucide="check" class="h-4 w-4 mr-2 text-green-500"></i> Maze</li>
+                        <li class="flex items-center"><i data-lucide="check" class="h-4 w-4 mr-2 text-green-500"></i> Optimal Workshop</li>
+                    </ul>
+                    <a href="#" class="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium flex items-center">
+                        Learn More <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Resource Card 2 -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden card-hover">
+                <div class="p-6">
+                    <div class="bg-cyan-100 dark:bg-cyan-900 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4">
+                        <i data-lucide="file-text" class="h-8 w-8 text-cyan-500 dark:text-cyan-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Research Methodologies</h3>
+                    <ul class="text-gray-600 dark:text-gray-400 space-y-2 mb-4">
+                        <li class="flex items-center"><i data-lucide="check" class="h-4 w-4 mr-2 text-green-500"></i> Contextual Inquiry</li>
+                        <li class="flex items-center"><i data-lucide="check" class="h-4 w-4 mr-2 text-green-500"></i> Card Sorting</li>
+                        <li class="flex items-center"><i data-lucide="check" class="h-4 w-4 mr-2 text-green-500"></i> A/B Testing</li>
+                        <li class="flex items-center"><i data-lucide="check" class="h-4 w-4 mr-2 text-green-500"></i> Journey Mapping</li>
+                    </ul>
+                    <a href="#" class="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium flex items-center">
+                        Learn More <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Resource Card 3 -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden card-hover">
+                <div class="p-6">
+                    <div class="bg-teal-100 dark:bg-teal-900 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4">
+                        <i data-lucide="book" class="h-8 w-8 text-teal-500 dark:text-teal-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Books & Publications</h3>
+                    <ul class="text-gray-600 dark:text-gray-400 space-y-2 mb-4">
+                        <li class="flex items-center"><i data-lucide="check" class="h-4 w-4 mr-2 text-green-500"></i> Don't Make Me Think</li>
+                        <li class="flex items-center"><i data-lucide="check" class="h-4 w-4 mr-2 text-green-500"></i> UX Research Methods</li>
+                        <li class="flex items-center"><i data-lucide="check" class="h-4 w-4 mr-2 text-green-500"></i> Sprint</li>
+                        <li class="flex items-center"><i data-lucide="check" class="h-4 w-4 mr-2 text-green-500"></i> The Design of Everyday Things</li>
+                    </ul>
+                    <a href="#" class="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium flex items-center">
+                        Learn More <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <section class="my-16">
+            <h2 class="text-2xl font-bold mb-8 text-center">Research Templates</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md card-hover">
+                    <h3 class="text-xl font-bold mb-4">User Interview Template</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">A structured template to guide your user interview sessions.</p>
+                    <button class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors duration-300">Download Template</button>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md card-hover">
+                    <h3 class="text-xl font-bold mb-4">Research Plan Template</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">Plan your next research project with this comprehensive template.</p>
+                    <button class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors duration-300">Download Template</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white dark:bg-gray-800 mt-12 py-8">
+        <div class="container mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
+            <p>&copy; 2025 UX Research Resources. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            themeToggle.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+                const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+                localStorage.setItem('theme', currentTheme);
+            });
+
+            // Initialize theme
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            }
+
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

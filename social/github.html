@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub - Jane Doe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.544.0/dist/umd/lucide.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'github-dark': '#24292e',
+                        'github-light': '#f6f8fa',
+                        'github-border': '#dfe2e5',
+                        'github-text': '#24292e',
+                        'github-text-secondary': '#586069',
+                        'github-blue': '#0366d6',
+                        'github-blue-light': '#4080ff',
+                        'github-green': '#28a745',
+                        'github-yellow': '#f1e05a',
+                        'github-red': '#cb2431',
+                        'github-purple': '#6f42c1',
+                        'github-pink': '#d2691e',
+                        'github-gray': '#586069',
+                        'github-gray-light': '#f6f8fa',
+                        'github-gray-dark': '#24292e',
+                        'dark-bg': '#0d1117',
+                        'dark-card': '#161b22',
+                        'dark-border': '#30363d',
+                        'dark-text': '#e6edf3',
+                        'dark-text-secondary': '#7d8590'
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica', 'Arial', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji']
+                    },
+                    boxShadow: {
+                        'github': '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .github-gradient {
+                background: linear-gradient(135deg, #6e8efb, #a777e3);
+            }
+            .repo-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 16px;
+            }
+            .repo-card {
+                transition: all 0.2s ease-in-out;
+            }
+            .repo-card:hover {
+                transform: translateY(-2px);
+                box-shadow: var(--tw-shadow);
+            }
+            .nav-link {
+                position: relative;
+            }
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                bottom: -4px;
+                left: 0;
+                background-color: currentColor;
+                transition: width 0.2s ease;
+            }
+            .nav-link:hover::after, .nav-link.active::after {
+                width: 100%;
+            }
+            .search-input {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23586069' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: 8px center;
+                background-size: 16px;
+                padding-left: 30px;
+            }
+            .dark .search-input {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237d8590' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
+            }
+            .language-dot {
+                border-radius: 50%;
+                display: inline-block;
+                height: 12px;
+                width: 12px;
+                margin-right: 4px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-github-light dark:bg-dark-bg font-sans text-github-text dark:text-dark-text transition-colors duration-300">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white dark:bg-dark-card border-b border-github-border dark:border-dark-border shadow-sm transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-4">
+                    <a href="../index.html" class="flex items-center space-x-2">
+                        <i data-lucide="github" class="h-8 w-8 text-github-text dark:text-dark-text"></i>
+                        <span class="font-bold text-xl hidden sm:inline">GitHub</span>
+                    </a>
+                    <div class="hidden md:block relative w-64">
+                        <input type="text" placeholder="Search GitHub" class="search-input w-full h-9 pl-10 pr-4 rounded-md bg-gray-100 dark:bg-gray-800 border border-github-border dark:border-dark-border focus:outline-none focus:ring-2 focus:ring-github-blue dark:focus:ring-github-blue-light text-sm transition-colors duration-300">
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <nav class="hidden md:flex items-center space-x-6">
+                        <a href="#" class="nav-link text-github-text-secondary dark:text-dark-text-secondary hover:text-github-text dark:hover:text-dark-text">Pull requests</a>
+                        <a href="#" class="nav-link text-github-text-secondary dark:text-dark-text-secondary hover:text-github-text dark:hover:text-dark-text">Issues</a>
+                        <a href="#" class="nav-link text-github-text-secondary dark:text-dark-text-secondary hover:text-github-text dark:hover:text-dark-text">Marketplace</a>
+                        <a href="#" class="nav-link text-github-text-secondary dark:text-dark-text-secondary hover:text-github-text dark:hover:text-dark-text">Explore</a>
+                    </nav>
+                    <button id="theme-toggle" class="p-2 rounded-full text-github-text-secondary dark:text-dark-text-secondary hover:bg-gray-200 dark:hover:bg-gray-700">
+                        <i data-lucide="sun" class="w-5 h-5 block dark:hidden"></i>
+                        <i data-lucide="moon" class="w-5 h-5 hidden dark:block"></i>
+                    </button>
+                    <button class="nav-icon p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300 hidden sm:block">
+                        <i data-lucide="bell" class="h-5 w-5"></i>
+                    </button>
+                    <button class="nav-icon p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300 hidden sm:block">
+                        <i data-lucide="plus" class="h-5 w-5"></i>
+                    </button>
+                    <div class="relative">
+                        <button id="user-menu-button" class="flex items-center space-x-2 p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300">
+                            <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/7d3fdf5c53f84b95aa8a0e3527af76aa~tplv-a9rns2rl98-image.image?rcl=20251222225753D0F7F6B3A8AEE7981537&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769007486&x-signature=%2F37b%2B0AQ2yJOtLhiJa1GCWJT8B0%3D" alt="Jane Doe" class="w-8 h-8 rounded-full">
+                            <i data-lucide="chevron-down" class="h-4 w-4 text-github-text-secondary dark:text-dark-text-secondary"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="bg-github-dark dark:bg-gray-900 text-white py-8 sm:py-12 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 sm:space-x-4">
+                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/7d3fdf5c53f84b95aa8a0e3527af76aa~tplv-a9rns2rl98-image.image?rcl=20251222225753D0F7F6B3A8AEE7981537&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769007486&x-signature=%2F37b%2B0AQ2yJOtLhiJa1GCWJT8B0%3D" alt="Jane Doe" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-2 border-white dark:border-gray-700 shadow-lg">
+                    <div>
+                        <h1 class="text-2xl sm:text-3xl font-bold">Jane Doe</h1>
+                        <p class="text-gray-300 text-base sm:text-lg">@janedoe</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-1 sm:space-x-2">
+                    <button id="follow-button" class="follow-btn px-3 sm:px-4 py-1.5 sm:py-2 bg-github-blue text-white rounded-md font-medium hover:bg-github-blue-light transition-colors duration-300 text-sm sm:text-base">Follow</button>
+                    <button class="p-1.5 sm:p-2 rounded-md hover:bg-gray-700 transition-colors duration-300">
+                        <i data-lucide="share-2" class="h-4 sm:h-5 w-4 sm:w-5"></i>
+                    </button>
+                    <button class="p-1.5 sm:p-2 rounded-md hover:bg-gray-700 transition-colors duration-300">
+                        <i data-lucide="more-horizontal" class="h-4 sm:h-5 w-4 sm:w-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-6 sm:py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 sm:gap-8">
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+                <div class="sticky top-20 space-y-6">
+                    <div class="bg-white dark:bg-dark-card p-4 sm:p-6 rounded-lg border border-github-border dark:border-dark-border shadow-sm transition-colors duration-300">
+                        <h2 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Jane Doe</h2>
+                        <p class="text-github-text-secondary dark:text-dark-text-secondary mb-3 sm:mb-4 text-sm sm:text-base leading-relaxed">UX Designer & Writer. Exploring the intersection of design and technology. Minimalism enthusiast.</p>
+                        
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-center text-github-text-secondary dark:text-dark-text-secondary">
+                                <i data-lucide="map-pin" class="h-4 w-4 mr-2"></i>
+                                <span>San Francisco, CA</span>
+                            </div>
+                            <div class="flex items-center text-github-text-secondary dark:text-dark-text-secondary">
+                                <i data-lucide="link" class="h-4 w-4 mr-2"></i>
+                                <a href="#" class="text-github-blue dark:text-github-blue-light hover:underline">janedoe.design</a>
+                            </div>
+                            <div class="flex items-center text-github-text-secondary dark:text-dark-text-secondary">
+                                <i data-lucide="twitter" class="h-4 w-4 mr-2"></i>
+                                <a href="#" class="text-github-blue dark:text-github-blue-light hover:underline">@janedoe</a>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-6 border-t border-github-border dark:border-dark-border">
+                            <div class="flex items-center space-x-4">
+                                <div class="text-center">
+                                    <p class="font-semibold">1.2K</p>
+                                    <p class="text-xs text-github-text-secondary dark:text-dark-text-secondary">Followers</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="font-semibold">568</p>
+                                    <p class="text-xs text-github-text-secondary dark:text-dark-text-secondary">Following</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-6 border-t border-github-border dark:border-dark-border">
+                            <h3 class="font-semibold mb-2">Organizations</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <div class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-xs font-bold text-gray-600 dark:text-gray-300 border border-github-border dark:border-dark-border">Org1</div>
+                                <div class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-xs font-bold text-gray-600 dark:text-gray-300 border border-github-border dark:border-dark-border">Org2</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="lg:col-span-3">
+                <!-- Tabs -->
+                <div class="bg-white dark:bg-dark-card rounded-lg border border-github-border dark:border-dark-border shadow-sm mb-6 transition-colors duration-300">
+                    <div class="flex items-center justify-between p-4 border-b border-github-border dark:border-dark-border">
+                        <div class="flex space-x-1">
+                            <button class="tab-button flex items-center py-2 px-4 text-center font-medium text-github-text dark:text-dark-text border-b-2 border-github-blue dark:border-github-blue-light" data-tab="repositories">
+                                <i data-lucide="code" class="h-5 w-5 mr-2"></i>
+                                <span>Repositories</span>
+                                <span class="ml-2 px-2 py-0.5 text-xs font-semibold bg-gray-100 dark:bg-gray-700 rounded-full text-github-text-secondary dark:text-dark-text-secondary">128</span>
+                            </button>
+                            <button class="tab-button flex-shrink-0 flex items-center py-2 px-3 sm:px-4 text-center font-medium text-github-text-secondary dark:text-dark-text-secondary hover:text-github-text dark:hover:text-dark-text" data-tab="projects">
+                                <i data-lucide="file-text" class="h-4 sm:h-5 w-4 sm:w-5 mr-1 sm:mr-2"></i>
+                                <span class="text-sm sm:text-base">Projects</span>
+                                <span class="ml-1 sm:ml-2 px-2 py-0.5 text-xs font-semibold bg-gray-100 dark:bg-gray-700 rounded-full text-github-text-secondary dark:text-dark-text-secondary">2</span>
+                            </button>
+                            <button class="tab-button flex-shrink-0 flex items-center py-2 px-3 sm:px-4 text-center font-medium text-github-text-secondary dark:text-dark-text-secondary hover:text-github-text dark:hover:text-dark-text" data-tab="stars">
+                                <i data-lucide="star" class="h-4 sm:h-5 w-4 sm:w-5 mr-1 sm:mr-2"></i>
+                                <span class="text-sm sm:text-base">Stars</span>
+                                <span class="ml-1 sm:ml-2 px-2 py-0.5 text-xs font-semibold bg-gray-100 dark:bg-gray-700 rounded-full text-github-text-secondary dark:text-dark-text-secondary">89</span>
+                            </button>
+                            <button class="tab-button flex-shrink-0 flex items-center py-2 px-3 sm:px-4 text-center font-medium text-github-text-secondary dark:text-dark-text-secondary hover:text-github-text dark:hover:text-dark-text" data-tab="followers">
+                                <i data-lucide="users" class="h-4 sm:h-5 w-4 sm:w-5 mr-1 sm:mr-2"></i>
+                                <span class="text-sm sm:text-base">Followers</span>
+                            </button>
+                            <button class="tab-button flex-shrink-0 flex items-center py-2 px-3 sm:px-4 text-center font-medium text-github-text-secondary dark:text-dark-text-secondary hover:text-github-text dark:hover:text-dark-text" data-tab="following">
+                                <i data-lucide="user-plus" class="h-4 sm:h-5 w-4 sm:w-5 mr-1 sm:mr-2"></i>
+                                <span class="text-sm sm:text-base">Following</span>
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <!-- Repositories Content -->
+                    <div id="repositories-content" class="p-3 sm:p-4">
+                        <div class="flex justify-end items-center mb-3 sm:mb-4 space-x-1 sm:space-x-2">
+                            <button class="flex items-center space-x-1 sm:space-x-2 px-2 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm rounded-md border border-github-border dark:border-dark-border hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-300">
+                                <i data-lucide="filter" class="h-3.5 w-3.5 sm:h-4 sm:w-4"></i>
+                                <span>Filter</span>
+                            </button>
+                            <button class="flex items-center space-x-1 sm:space-x-2 px-2 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm rounded-md border border-github-border dark:border-dark-border hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-300">
+                                <i data-lucide="sort-desc" class="h-3.5 w-3.5 sm:h-4 sm:w-4"></i>
+                                <span>Sort</span>
+                            </button>
+                            <button class="flex items-center space-x-1 sm:space-x-2 px-2 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm rounded-md bg-github-blue text-white hover:bg-github-blue-light transition-colors duration-300">
+                                <i data-lucide="plus" class="h-3.5 w-3.5 sm:h-4 sm:w-4"></i>
+                                <span>New</span>
+                            </button>
+                        </div>
+
+                        <div class="repo-grid">
+                            <!-- Repo 1 -->
+                            <div class="repo-card bg-white dark:bg-dark-card p-4 sm:p-6 rounded-lg border border-github-border dark:border-dark-border hover:shadow-github transition-all duration-300">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="font-semibold text-base sm:text-lg text-github-blue dark:text-github-blue-light hover:underline">minimalist-portfolio</h3>
+                                    <button class="text-github-text-secondary dark:text-dark-text-secondary hover:text-github-yellow dark:hover:text-github-yellow transition-colors duration-300">
+                                        <i data-lucide="star" class="h-4 sm:h-5 w-4 sm:w-5"></i>
+                                    </button>
+                                </div>
+                                <p class="mt-2 text-xs sm:text-sm text-github-text-secondary dark:text-dark-text-secondary leading-relaxed">A clean and minimalist portfolio template for designers and developers.</p>
+                                <div class="mt-3 sm:mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0 text-xs sm:text-sm">
+                                    <div class="flex items-center space-x-3 sm:space-x-4">
+                                        <span class="flex items-center">
+                                            <span class="language-dot bg-blue-500"></span>
+                                            <span>HTML</span>
+                                        </span>
+                                        <span class="text-github-text-secondary dark:text-dark-text-secondary">Updated 2 days ago</span>
+                                    </div>
+                                    <div class="flex items-center text-github-text-secondary dark:text-dark-text-secondary">
+                                        <button class="flex items-center space-x-1 hover:text-github-text dark:hover:text-dark-text transition-colors duration-300">
+                                            <i data-lucide="star" class="h-3.5 w-3.5 sm:h-4 sm:w-4"></i>
+                                            <span>128</span>
+                                        </button>
+                                        <button class="flex items-center space-x-1 ml-3 sm:ml-4 hover:text-github-text dark:hover:text-dark-text transition-colors duration-300">
+                                            <i data-lucide="git-branch" class="h-3.5 w-3.5 sm:h-4 sm:w-4"></i>
+                                            <span>56</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Repo 2 -->
+                            <div class="repo-card bg-white dark:bg-dark-card p-4 sm:p-6 rounded-lg border border-github-border dark:border-dark-border hover:shadow-github transition-all duration-300">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="font-semibold text-base sm:text-lg text-github-blue dark:text-github-blue-light hover:underline">ux-research-tools</h3>
+                                    <button class="text-github-text-secondary dark:text-dark-text-secondary hover:text-github-yellow dark:hover:text-github-yellow transition-colors duration-300">
+                                        <i data-lucide="star" class="h-4 sm:h-5 w-4 sm:w-5"></i>
+                                    </button>
+                                </div>
+                                <p class="mt-2 text-xs sm:text-sm text-github-text-secondary dark:text-dark-text-secondary leading-relaxed">A collection of useful tools and resources for UX researchers.</p>
+                                <div class="mt-3 sm:mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0 text-xs sm:text-sm">
+                                    <div class="flex items-center space-x-3 sm:space-x-4">
+                                        <span class="flex items-center">
+                                            <span class="language-dot bg-yellow-500"></span>
+                                            <span>JavaScript</span>
+                                        </span>
+                                        <span class="text-github-text-secondary dark:text-dark-text-secondary">Updated 1 week ago</span>
+                                    </div>
+                                    <div class="flex items-center text-github-text-secondary dark:text-dark-text-secondary">
+                                        <button class="flex items-center space-x-1 hover:text-github-text dark:hover:text-dark-text transition-colors duration-300">
+                                            <i data-lucide="star" class="h-3.5 w-3.5 sm:h-4 sm:w-4"></i>
+                                            <span>256</span>
+                                        </button>
+                                        <button class="flex items-center space-x-1 ml-3 sm:ml-4 hover:text-github-text dark:hover:text-dark-text transition-colors duration-300">
+                                            <i data-lucide="git-branch" class="h-3.5 w-3.5 sm:h-4 sm:w-4"></i>
+                                            <span>78</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Repo 3 -->
+                            <div class="repo-card bg-white dark:bg-dark-card p-6 rounded-lg border border-github-border dark:border-dark-border hover:shadow-github transition-all duration-300">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="font-semibold text-lg text-github-blue dark:text-github-blue-light hover:underline">design-system</h3>
+                                    <button class="text-github-text-secondary dark:text-dark-text-secondary hover:text-github-yellow dark:hover:text-github-yellow transition-colors duration-300">
+                                        <i data-lucide="star" class="h-5 w-5"></i>
+                                    </button>
+                                </div>
+                                <p class="mt-2 text-sm text-github-text-secondary dark:text-dark-text-secondary">My personal design system for consistent UI across projects.</p>
+                                <div class="mt-4 flex items-center justify-between text-sm">
+                                    <div class="flex items-center space-x-4">
+                                        <span class="flex items-center">
+                                            <span class="language-dot bg-purple-500"></span>
+                                            <span>CSS</span>
+                                        </span>
+                                        <span class="text-github-text-secondary dark:text-dark-text-secondary">Updated 3 weeks ago</span>
+                                    </div>
+                                    <div class="flex items-center text-github-text-secondary dark:text-dark-text-secondary">
+                                        <button class="flex items-center space-x-1 hover:text-github-text dark:hover:text-dark-text transition-colors duration-300">
+                                            <i data-lucide="star" class="h-4 w-4"></i>
+                                            <span>189</span>
+                                        </button>
+                                        <button class="flex items-center space-x-1 ml-4 hover:text-github-text dark:hover:text-dark-text transition-colors duration-300">
+                                            <i data-lucide="git-branch" class="h-4 w-4"></i>
+                                            <span>42</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Repo 4 -->
+                            <div class="repo-card bg-white dark:bg-dark-card p-6 rounded-lg border border-github-border dark:border-dark-border hover:shadow-github transition-all duration-300">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="font-semibold text-lg text-github-blue dark:text-github-blue-light hover:underline">blog-api</h3>
+                                    <button class="text-github-text-secondary dark:text-dark-text-secondary hover:text-github-yellow dark:hover:text-github-yellow transition-colors duration-300">
+                                        <i data-lucide="star" class="h-5 w-5"></i>
+                                    </button>
+                                </div>
+                                <p class="mt-2 text-sm text-github-text-secondary dark:text-dark-text-secondary">The backend API for my personal blog.</p>
+                                <div class="mt-4 flex items-center justify-between text-sm">
+                                    <div class="flex items-center space-x-4">
+                                        <span class="flex items-center">
+                                            <span class="language-dot bg-green-500"></span>
+                                            <span>Python</span>
+                                        </span>
+                                        <span class="text-github-text-secondary dark:text-dark-text-secondary">Updated 1 month ago</span>
+                                    </div>
+                                    <div class="flex items-center text-github-text-secondary dark:text-dark-text-secondary">
+                                        <button class="flex items-center space-x-1 hover:text-github-text dark:hover:text-dark-text transition-colors duration-300">
+                                            <i data-lucide="star" class="h-4 w-4"></i>
+                                            <span>98</span>
+                                        </button>
+                                        <button class="flex items-center space-x-1 ml-4 hover:text-github-text dark:hover:text-dark-text transition-colors duration-300">
+                                            <i data-lucide="git-branch" class="h-4 w-4"></i>
+                                            <span>23</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Repo 5 -->
+                            <div class="repo-card bg-white dark:bg-dark-card p-6 rounded-lg border border-github-border dark:border-dark-border hover:shadow-github transition-all duration-300">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="font-semibold text-lg text-github-blue dark:text-github-blue-light hover:underline">daily-ui-challenges</h3>
+                                    <button class="text-github-text-secondary dark:text-dark-text-secondary hover:text-github-yellow dark:hover:text-github-yellow transition-colors duration-300">
+                                        <i data-lucide="star" class="h-5 w-5"></i>
+                                    </button>
+                                </div>
+                                <p class="mt-2 text-sm text-github-text-secondary dark:text-dark-text-secondary">My submissions for the 100 Days UI Challenge.</p>
+                                <div class="mt-4 flex items-center justify-between text-sm">
+                                    <div class="flex items-center space-x-4">
+                                        <span class="flex items-center">
+                                            <span class="language-dot bg-pink-500"></span>
+                                            <span>React</span>
+                                        </span>
+                                        <span class="text-github-text-secondary dark:text-dark-text-secondary">Updated 2 months ago</span>
+                                    </div>
+                                    <div class="flex items-center text-github-text-secondary dark:text-dark-text-secondary">
+                                        <button class="flex items-center space-x-1 hover:text-github-text dark:hover:text-dark-text transition-colors duration-300">
+                                            <i data-lucide="star" class="h-4 w-4"></i>
+                                            <span>312</span>
+                                        </button>
+                                        <button class="flex items-center space-x-1 ml-4 hover:text-github-text dark:hover:text-dark-text transition-colors duration-300">
+                                            <i data-lucide="git-branch" class="h-4 w-4"></i>
+                                            <span>67</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Repo 6 -->
+                            <div class="repo-card bg-white dark:bg-dark-card p-6 rounded-lg border border-github-border dark:border-dark-border hover:shadow-github transition-all duration-300">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="font-semibold text-lg text-github-blue dark:text-github-blue-light hover:underline">ai-chatbot</h3>
+                                    <button class="text-github-text-secondary dark:text-dark-text-secondary hover:text-github-yellow dark:hover:text-github-yellow transition-colors duration-300">
+                                        <i data-lucide="star" class="h-5 w-5"></i>
+                                    </button>
+                                </div>
+                                <p class="mt-2 text-sm text-github-text-secondary dark:text-dark-text-secondary">A simple AI chatbot built with Python and TensorFlow.</p>
+                                <div class="mt-4 flex items-center justify-between text-sm">
+                                    <div class="flex items-center space-x-4">
+                                        <span class="flex items-center">
+                                            <span class="language-dot bg-green-500"></span>
+                                            <span>Python</span>
+                                        </span>
+                                        <span class="text-github-text-secondary dark:text-dark-text-secondary">Updated 3 months ago</span>
+                                    </div>
+                                    <div class="flex items-center text-github-text-secondary dark:text-dark-text-secondary">
+                                        <button class="flex items-center space-x-1 hover:text-github-text dark:hover:text-dark-text transition-colors duration-300">
+                                            <i data-lucide="star" class="h-4 w-4"></i>
+                                            <span>445</span>
+                                        </button>
+                                        <button class="flex items-center space-x-1 ml-4 hover:text-github-text dark:hover:text-dark-text transition-colors duration-300">
+                                            <i data-lucide="git-branch" class="h-4 w-4"></i>
+                                            <span>102</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projects Content -->
+                    <div id="projects-content" class="hidden p-4">
+                        <div class="space-y-4">
+                            <div class="bg-white dark:bg-dark-card p-6 rounded-lg border border-github-border dark:border-dark-border shadow-sm transition-colors duration-300">
+                                <h3 class="font-semibold text-lg">Design System Overhaul</h3>
+                                <p class="mt-2 text-sm text-github-text-secondary dark:text-dark-text-secondary">A complete redesign of the company's design system to improve consistency and developer experience.</p>
+                                <div class="mt-4 flex items-center justify-between text-sm">
+                                    <div class="flex items-center space-x-4 text-github-text-secondary dark:text-dark-text-secondary">
+                                        <span class="flex items-center"><i data-lucide="users" class="h-4 w-4 mr-1"></i> 4 contributors</span>
+                                        <span class="flex items-center"><i data-lucide="calendar" class="h-4 w-4 mr-1"></i> Aug 15, 2025</span>
+                                    </div>
+                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200">Active</span>
+                                </div>
+                            </div>
+                            <div class="bg-white dark:bg-dark-card p-6 rounded-lg border border-github-border dark:border-dark-border shadow-sm transition-colors duration-300">
+                                <h3 class="font-semibold text-lg">Mobile App Redesign</h3>
+                                <p class="mt-2 text-sm text-github-text-secondary dark:text-dark-text-secondary">Reimagining the user flow and interface for our flagship mobile application.</p>
+                                <div class="mt-4 flex items-center justify-between text-sm">
+                                    <div class="flex items-center space-x-4 text-github-text-secondary dark:text-dark-text-secondary">
+                                        <span class="flex items-center"><i data-lucide="users" class="h-4 w-4 mr-1"></i> 6 contributors</span>
+                                        <span class="flex items-center"><i data-lucide="calendar" class="h-4 w-4 mr-1"></i> Jul 20, 2025</span>
+                                    </div>
+                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200">In Progress</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stars Content -->
+                    <div id="stars-content" class="hidden p-4">
+                        <div class="repo-grid">
+                            <div class="repo-card bg-white dark:bg-dark-card p-6 rounded-lg border border-github-border dark:border-dark-border hover:shadow-github transition-all duration-300">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="font-semibold text-lg text-github-blue dark:text-github-blue-light hover:underline">awesome-design-tools</h3>
+                                    <button class="text-github-yellow dark:text-github-yellow hover:text-github-yellow-dark transition-colors duration-300">
+                                        <i data-lucide="star" class="h-5 w-5"></i>
+                                    </button>
+                                </div>
+                                <p class="mt-2 text-sm text-github-text-secondary dark:text-dark-text-secondary">A curated list of design tools and resources for UI/UX designers.</p>
+                                <div class="mt-4 flex items-center justify-between text-sm">
+                                    <div class="flex items-center space-x-4">
+                                        <span class="flex items-center">
+                                            <span class="language-dot bg-gray-500"></span>
+                                            <span>Markdown</span>
+                                        </span>
+                                        <span class="text-github-text-secondary dark:text-dark-text-secondary">Updated 3 days ago</span>
+                                    </div>
+                                    <div class="flex items-center text-github-text-secondary dark:text-dark-text-secondary">
+                                        <button class="flex items-center space-x-1 hover:text-github-text dark:hover:text-dark-text transition-colors duration-300">
+                                            <i data-lucide="star" class="h-4 w-4"></i>
+                                            <span>1.2k</span>
+                                        </button>
+                                        <button class="flex items-center space-x-1 ml-4 hover:text-github-text dark:hover:text-dark-text transition-colors duration-300">
+                                            <i data-lucide="git-branch" class="h-4 w-4"></i>
+                                            <span>234</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="repo-card bg-white dark:bg-dark-card p-6 rounded-lg border border-github-border dark:border-dark-border hover:shadow-github transition-all duration-300">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="font-semibold text-lg text-github-blue dark:text-github-blue-light hover:underline">react-components</h3>
+                                    <button class="text-github-yellow dark:text-github-yellow hover:text-github-yellow-dark transition-colors duration-300">
+                                        <i data-lucide="star" class="h-5 w-5"></i>
+                                    </button>
+                                </div>
+                                <p class="mt-2 text-sm text-github-text-secondary dark:text-dark-text-secondary">A library of reusable React components built with Tailwind CSS.</p>
+                                <div class="mt-4 flex items-center justify-between text-sm">
+                                    <div class="flex items-center space-x-4">
+                                        <span class="flex items-center">
+                                            <span class="language-dot bg-pink-500"></span>
+                                            <span>React</span>
+                                        </span>
+                                        <span class="text-github-text-secondary dark:text-dark-text-secondary">Updated 1 week ago</span>
+                                    </div>
+                                    <div class="flex items-center text-github-text-secondary dark:text-dark-text-secondary">
+                                        <button class="flex items-center space-x-1 hover:text-github-text dark:hover:text-dark-text transition-colors duration-300">
+                                            <i data-lucide="star" class="h-4 w-4"></i>
+                                            <span>892</span>
+                                        </button>
+                                        <button class="flex items-center space-x-1 ml-4 hover:text-github-text dark:hover:text-dark-text transition-colors duration-300">
+                                            <i data-lucide="git-branch" class="h-4 w-4"></i>
+                                            <span>156</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Followers Content -->
+                    <div id="followers-content" class="hidden p-4">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-white dark:bg-dark-card rounded-lg border border-github-border dark:border-dark-border shadow-sm transition-colors duration-300">
+                                <div class="flex items-center space-x-4">
+                                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/7d3fdf5c53f84b95aa8a0e3527af76aa~tplv-a9rns2rl98-image.image?rcl=20251222225753D0F7F6B3A8AEE7981537&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769007486&x-signature=%2F37b%2B0AQ2yJOtLhiJa1GCWJT8B0%3D" alt="User" class="w-10 h-10 rounded-full">
+                                    <div>
+                                        <h4 class="font-semibold">John Smith</h4>
+                                        <p class="text-sm text-github-text-secondary dark:text-dark-text-secondary">@johnsmith</p>
+                                    </div>
+                                </div>
+                                <button class="follow-btn px-3 py-1 text-sm rounded-md border border-github-border dark:border-dark-border hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-300">Follow</button>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-white dark:bg-dark-card rounded-lg border border-github-border dark:border-dark-border shadow-sm transition-colors duration-300">
+                                <div class="flex items-center space-x-4">
+                                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/7d3fdf5c53f84b95aa8a0e3527af76aa~tplv-a9rns2rl98-image.image?rcl=20251222225753D0F7F6B3A8AEE7981537&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769007486&x-signature=%2F37b%2B0AQ2yJOtLhiJa1GCWJT8B0%3D" alt="User" class="w-10 h-10 rounded-full">
+                                    <div>
+                                        <h4 class="font-semibold">Sarah Johnson</h4>
+                                        <p class="text-sm text-github-text-secondary dark:text-dark-text-secondary">@sarahjohnson</p>
+                                    </div>
+                                </div>
+                                <button class="follow-btn px-3 py-1 text-sm rounded-md border border-github-border dark:border-dark-border hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-300">Follow</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Following Content -->
+                    <div id="following-content" class="hidden p-4">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-white dark:bg-dark-card rounded-lg border border-github-border dark:border-dark-border shadow-sm transition-colors duration-300">
+                                <div class="flex items-center space-x-4">
+                                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/7d3fdf5c53f84b95aa8a0e3527af76aa~tplv-a9rns2rl98-image.image?rcl=20251222225753D0F7F6B3A8AEE7981537&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769007486&x-signature=%2F37b%2B0AQ2yJOtLhiJa1GCWJT8B0%3D" alt="User" class="w-10 h-10 rounded-full">
+                                    <div>
+                                        <h4 class="font-semibold">Alex Thompson</h4>
+                                        <p class="text-sm text-github-text-secondary dark:text-dark-text-secondary">@alexthompson</p>
+                                    </div>
+                                </div>
+                                <button class="px-3 py-1 text-sm rounded-md bg-gray-100 dark:bg-gray-700 text-github-text dark:text-dark-text hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">Following</button>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-white dark:bg-dark-card rounded-lg border border-github-border dark:border-dark-border shadow-sm transition-colors duration-300">
+                                <div class="flex items-center space-x-4">
+                                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/7d3fdf5c53f84b95aa8a0e3527af76aa~tplv-a9rns2rl98-image.image?rcl=20251222225753D0F7F6B3A8AEE7981537&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769007486&x-signature=%2F37b%2B0AQ2yJOtLhiJa1GCWJT8B0%3D" alt="User" class="w-10 h-10 rounded-full">
+                                    <div>
+                                        <h4 class="font-semibold">Lisa Wong</h4>
+                                        <p class="text-sm text-github-text-secondary dark:text-dark-text-secondary">@lisawong</p>
+                                    </div>
+                                </div>
+                                <button class="px-3 py-1 text-sm rounded-md bg-gray-100 dark:bg-gray-700 text-github-text dark:text-dark-text hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">Following</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+
+            // Theme toggle functionality
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    document.documentElement.classList.toggle('dark');
+                    localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+                });
+            }
+
+            // Initialize theme based on user preference
+            if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+
+            // Follow button functionality
+            const followButtons = document.querySelectorAll('.follow-btn');
+            followButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    if (button.textContent.trim() === 'Follow') {
+                        button.textContent = 'Following';
+                        button.classList.remove('bg-github-blue', 'text-white', 'hover:bg-github-blue-light');
+                        button.classList.add('bg-gray-100', 'dark:bg-gray-700', 'text-github-text', 'dark:text-dark-text', 'hover:bg-gray-200', 'dark:hover:bg-gray-600');
+                    } else {
+                        button.textContent = 'Follow';
+                        button.classList.add('bg-github-blue', 'text-white', 'hover:bg-github-blue-light');
+                        button.classList.remove('bg-gray-100', 'dark:bg-gray-700', 'text-github-text', 'dark:text-dark-text', 'hover:bg-gray-200', 'dark:hover:bg-gray-600');
+                    }
+                });
+            });
+
+            // Tab functionality
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const repositoriesContent = document.getElementById('repositories-content');
+            const projectsContent = document.getElementById('projects-content');
+            const starsContent = document.getElementById('stars-content');
+            const followersContent = document.getElementById('followers-content');
+            const followingContent = document.getElementById('following-content');
+
+            function showTab(tabName) {
+                repositoriesContent.style.display = 'none';
+                projectsContent.style.display = 'none';
+                starsContent.style.display = 'none';
+                followersContent.style.display = 'none';
+                followingContent.style.display = 'none';
+
+                if (tabName === 'repositories') {
+                    repositoriesContent.style.display = 'block';
+                } else if (tabName === 'projects') {
+                    projectsContent.style.display = 'block';
+                } else if (tabName === 'stars') {
+                    starsContent.style.display = 'block';
+                } else if (tabName === 'followers') {
+                    followersContent.style.display = 'block';
+                } else if (tabName === 'following') {
+                    followingContent.style.display = 'block';
+                }
+
+                tabButtons.forEach(btn => {
+                    if (btn.getAttribute('data-tab') === tabName) {
+                        btn.classList.add('text-github-text', 'dark:text-dark-text', 'border-b-2', 'border-github-blue', 'dark:border-github-blue-light');
+                        btn.classList.remove('text-github-text-secondary', 'dark:text-dark-text-secondary', 'hover:text-github-text', 'dark:hover:text-dark-text');
+                    } else {
+                        btn.classList.remove('text-github-text', 'dark:text-dark-text', 'border-b-2', 'border-github-blue', 'dark:border-github-blue-light');
+                        btn.classList.add('text-github-text-secondary', 'dark:text-dark-text-secondary', 'hover:text-github-text', 'dark:hover:text-dark-text');
+                    }
+                });
+            }
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.getAttribute('data-tab');
+                    showTab(tabId);
+                });
+            });
+
+            showTab('repositories');
+        });
+    </script>
+</body>
+</html>

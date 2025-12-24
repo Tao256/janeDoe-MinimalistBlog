@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Power of Typography</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.544.0/dist/umd/lucide.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            font-family: 'Inter', sans-serif;
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #000;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        .comment-author.numeric {
+            word-break: break-all;
+        }
+        .mobile-menu-enter {
+		    opacity: 0;
+		    transform: translateY(-10px);
+		}
+		.mobile-menu-enter-active {
+		    opacity: 1;
+		    transform: translateY(0);
+		    transition: opacity 0.3s ease, transform 0.3s ease;
+		}
+		.mobile-menu {
+		    position: absolute;
+		    top: 100%;
+		    left: 0;
+		    right: 0;
+		    z-index: 50;
+		}
+		.mobile-menu-button-active .lucide-menu {
+		    transform: rotate(90deg);
+		}
+		.lucide-menu {
+		    transition: transform 0.3s ease;
+		}
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="../index.html" class="text-black font-bold text-xl">Minimalist Blog</a>
+                </div>
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="../index.html" class="nav-link text-gray-600 hover:text-black">Home</a>
+                    <a href="../gallery.html" class="nav-link text-gray-600 hover:text-black">Gallery</a>
+                    <a href="../about.html" class="nav-link text-gray-600 hover:text-black">About</a>
+                </nav>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-700 focus:outline-none">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md mobile-menu-enter mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="../index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-black">Home</a>
+                <a href="../gallery.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-black">Gallery</a>
+                <a href="../about.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-black">About</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- 外层容器：移动端垂直排列，电脑端水平排列 -->
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Post Content -->
+            <article class="w-full lg:w-2/3 lg:order-2 bg-white p-8 rounded-lg shadow-sm">
+                <header>
+                    <h1 class="text-3xl font-bold text-gray-900">The Power of Typography</h1>
+                    <div class="text-sm text-gray-500 mt-2">November 20, 2025</div>
+                </header>
+                <div class="mt-8 prose prose-gray max-w-none">
+                    <p>Typography is often called the "unsung hero" of design. It's not just about making words readable; it's about conveying emotion, establishing hierarchy, and shaping the user's experience. The right typeface can transform a mundane message into something memorable.</p>
+                    <img src="https://free.picui.cn/free/2025/12/24/694bc1b8bb384.jpg" alt="Typography Design" class="my-8 rounded-lg shadow-lg cursor-pointer" onclick="openModal('https://free.picui.cn/free/2025/12/24/694bc1b8bb384.jpg')">
+                    <h2>The Psychology of Type</h2>
+                    <p>Every font has a personality. A bold, sans-serif typeface might convey strength and modernity, while a delicate script can evoke elegance and tradition. As designers, we must be intentional about the message our typography sends. The wrong choice can undermine the content, while the right one can elevate it.</p>
+                    <h2>Hierarchy and Readability</h2>
+                    <p>A well-designed typographic system guides the reader through the content. By varying size, weight, and spacing, we create a visual hierarchy that makes information easy to scan and digest. This is especially important in today's world of short attention spans and information overload.</p>
+                    <h2>The Art of Pairing</h2>
+                    <p>Combining different typefaces is both an art and a science. The key is to find fonts that complement each other—perhaps a strong display font for headlines paired with a neutral one for body text. The goal is to create contrast without conflict.</p>
+                    <p>In a world where we're constantly bombarded with visual stimuli, good typography is more important than ever. It's a subtle yet powerful tool that can make or break a design.</p>
+                </div>
+            </article>
+
+            <!-- Sidebar -->
+            <aside class="w-full lg:w-1/3 lg:order-1 space-y-6">
+                <div class="flex flex-col gap-6">
+                    <!-- 个人信息栏：电脑端(order-1)在前，移动端(order-2)在后 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm order-2 lg:order-1">
+                        <div class="flex flex-col items-center">
+                            <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/7d3fdf5c53f84b95aa8a0e3527af76aa~tplv-a9rns2rl98-image.image?rcl=20251222225753D0F7F6B3A8AEE7981537&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769007486&x-signature=%2F37b%2B0AQ2yJOtLhiJa1GCWJT8B0%3D" alt="Personal Avatar" class="w-32 h-32 rounded-full mb-4 cursor-pointer" onclick="openModal('https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/7d3fdf5c53f84b95aa8a0e3527af76aa~tplv-a9rns2rl98-image.image?rcl=20251222225753D0F7F6B3A8AEE7981537&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769007486&x-signature=%2F37b%2B0AQ2yJOtLhiJa1GCWJT8B0%3D')">
+                            <h2 class="text-lg font-semibold text-gray-800">Jane Doe</h2>
+                            <p class="text-sm text-gray-500 mt-1">UX Designer & Writer</p>
+                        </div>
+                        <div class="mt-6">
+                            <h3 class="text-sm font-semibold text-gray-800 uppercase tracking-wide">About Me</h3>
+                            <p class="mt-2 text-sm text-gray-600">
+                                Exploring the intersection of design and technology through writing and creative projects.
+                            </p>
+                        </div>
+                        <div class="mt-6">
+                            <h3 class="text-sm font-semibold text-gray-800 uppercase tracking-wide">Social</h3>
+                            <div class="mt-3 flex space-x-3">
+                                <a href="../social/twitter.html" class="text-gray-400 hover:text-gray-500">
+                                  <i data-lucide="twitter"></i>
+                                </a>
+                                <a href="../social/instagram.html" class="text-gray-400 hover:text-gray-500">
+                                  <i data-lucide="instagram"></i>
+                                </a>
+                                <a href="../social/github.html" class="text-gray-400 hover:text-gray-500">
+                                  <i data-lucide="github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 评论区：电脑端(order-2)在后，移动端(order-1)在前 -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm order-1 lg:order-2">
+                        <h3 class="text-lg font-semibold text-gray-900">Comments</h3>
+                        <div id="comments-container" class="mt-4 space-y-4">
+                            <!-- Comments will be dynamically inserted here -->
+                        </div>
+                        <div class="mt-6">
+                            <h4 class="text-sm font-semibold text-gray-800">Leave a Comment</h4>
+                            <form id="comment-form" class="mt-4">
+                                <div class="flex items-center mb-3">
+                                    <input type="checkbox" id="author-checkbox" class="mr-2 h-4 w-4 text-gray-900 border-gray-300 rounded focus:ring-gray-500">
+                                    <label for="author-checkbox" class="text-sm text-gray-600">I'm the author</label>
+                                </div>
+                                <input type="text" id="comment-author" class="w-full px-3 py-2 mb-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500" placeholder="Your name...">
+                                <textarea id="comment-input" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500" placeholder="Write your comment..." style="word-break: break-all;"></textarea>
+                                <button type="submit" class="mt-3 px-4 py-2 bg-black text-white text-sm font-medium rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-12">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-sm text-gray-500">© 2025 Minimalist Blog. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="../privacy-policy.html" class="text-gray-400 hover:text-gray-500">
+                        <span class="sr-only">Privacy Policy</span>
+                        <i data-lucide="shield"></i>
+                    </a>
+                    <a href="../terms-of-service.html" class="text-gray-400 hover:text-gray-500">
+                        <span class="sr-only">Terms of Service</span>
+                        <i data-lucide="file-text"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // 移动端菜单切换逻辑
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.remove('hidden');
+                    // Trigger reflow
+                    void mobileMenu.offsetWidth;
+                    mobileMenu.classList.add('mobile-menu-enter-active');
+        			mobileMenuButton.classList.add('mobile-menu-button-active');
+                } else {
+                    mobileMenu.classList.remove('mobile-menu-enter-active');
+        			mobileMenuButton.classList.remove('mobile-menu-button-active');
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
+                }
+            });
+        }
+
+        function openModal(imageSrc) {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="relative max-w-4xl max-h-[90vh]">
+                    <img src="${imageSrc}" alt="Enlarged Image" class="max-w-full max-h-[90vh] object-contain">
+                    <button onclick="closeModal()" class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75">
+                        <i data-lucide="x" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+
+        function closeModal() {
+            const modal = document.querySelector('.fixed.inset-0.bg-black.bg-opacity-75');
+            if (modal) {
+                document.body.removeChild(modal);
+                document.body.style.overflow = '';
+            }
+        }
+
+        const comments = [
+            {
+                id: 1,
+                author: 'Helvetica Neue',
+                content: 'Finally, someone who understands! Typography is not just an afterthought. It\'s the foundation of good design. Well articulated article.',
+                date: 'November 21, 2025',
+                likes: 25,
+                replies: []
+            },
+            {
+                id: 2,
+                author: 'Georgia Serif',
+                content: 'I would have loved to see more examples of bad vs. good typography. Nevertheless, a great read for anyone looking to understand the importance of type.',
+                date: 'November 22, 2025',
+                likes: 10,
+                replies: [
+                    {
+                        id: 1,
+                        author: 'Jane Doe',
+                        content: 'That\'s a great suggestion, Georgia! I\'ll definitely include some comparative examples in my next post on this topic. Thanks for reading!',
+                        date: 'November 22, 2025',
+                        likes: 7
+                    }
+                ]
+            },
+            {
+                id: 3,
+                author: 'Comic Sans',
+                content: 'Ugh, why does everyone hate on me? I have my place too! 😢',
+                date: 'November 23, 2025',
+                likes: 3,
+                replies: [
+                    {
+                        id: 1,
+                        author: 'Jane Doe',
+                        content: 'Haha, Comic Sans, you do have your moments! Just maybe not in a corporate annual report or a funeral invitation. 😉',
+                        date: 'November 23, 2025',
+                        likes: 12
+                    }
+                ]
+            }
+        ];
+
+        const commentsContainer = document.getElementById('comments-container');
+        const commentForm = document.getElementById('comment-form');
+        const commentInput = document.getElementById('comment-input');
+        const commentAuthor = document.getElementById('comment-author');
+
+        function renderComments() {
+            commentsContainer.innerHTML = '';
+            comments.forEach(comment => {
+                const commentElement = document.createElement('div');
+                commentElement.className = 'border-t border-gray-100 pt-4';
+                
+                let repliesHtml = '';
+                if (comment.replies && comment.replies.length > 0) {
+                    repliesHtml = comment.replies.map(reply => `
+                        <div class="ml-6 mt-3 border-l-2 border-gray-200 pl-4">
+                            <div class="flex justify-between items-start">
+                                <div class="flex items-center">
+                                    <h5 class="text-xs font-semibold text-gray-900 ${isNumeric(reply.author) ? 'comment-author numeric' : ''}">${reply.author}</h5>
+                                    ${reply.author === 'Jane Doe' ? '<span class="ml-2 text-xs font-medium bg-black text-white px-2 py-0.5 rounded-full">Author</span>' : ''}
+                                </div>
+                                <span class="text-xs text-gray-500">${reply.date}</span>
+                            </div>
+                            <p class="mt-1 text-xs text-gray-600 break-words">${reply.content}</p>
+                            <div class="mt-2 flex items-center">
+                                <button class="text-xs text-gray-500 hover:text-gray-700 flex items-center" onclick="likeReply(${comment.id}, ${reply.id})">
+                                    <i data-lucide="thumbs-up" class="h-3 w-3 mr-1"></i> <span>${reply.likes || 0}</span>
+                                </button>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+
+                commentElement.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <div class="flex items-center">
+                            <h4 class="text-sm font-semibold text-gray-900 ${isNumeric(comment.author) ? 'comment-author numeric' : ''}">${comment.author}</h4>
+                            ${comment.author === 'Jane Doe' ? '<span class="ml-2 text-xs font-medium bg-black text-white px-2 py-0.5 rounded-full">Author</span>' : ''}
+                        </div>
+                        <span class="text-xs text-gray-500">${comment.date}</span>
+                    </div>
+                    <p class="mt-1 text-sm text-gray-600 break-words">${comment.content}</p>
+                    <div class="mt-2 flex items-center space-x-4">
+                        <button class="text-xs text-gray-500 hover:text-gray-700 flex items-center" onclick="likeComment(${comment.id})">
+                            <i data-lucide="thumbs-up" class="h-3 w-3 mr-1"></i> <span>${comment.likes || 0}</span>
+                        </button>
+                        <button class="text-xs text-gray-500 hover:text-gray-700" onclick="toggleReplyForm(${comment.id})">Reply</button>
+                    </div>
+                    <div id="reply-form-${comment.id}" class="hidden mt-3">
+                        <div class="flex items-center mb-2">
+                            <input type="checkbox" id="reply-author-checkbox-${comment.id}" class="mr-2 h-4 w-4 text-gray-900 border-gray-300 rounded focus:ring-gray-500">
+                            <label for="reply-author-checkbox-${comment.id}" class="text-xs text-gray-600">I'm the author</label>
+                        </div>
+                        <input type="text" id="reply-author-${comment.id}" class="w-full px-3 py-2 mb-2 text-xs border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500" placeholder="Your name...">
+                        <textarea id="reply-content-${comment.id}" rows="2" class="w-full px-3 py-2 text-xs border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500" placeholder="Write a reply..." style="word-break: break-all;"></textarea>
+                        <button type="button" class="mt-2 px-3 py-1 bg-black text-white text-xs font-medium rounded-md hover:bg-gray-800" onclick="submitReply(${comment.id})">Submit Reply</button>
+                    </div>
+                    <div id="replies-${comment.id}">${repliesHtml}</div>
+                `;
+                commentsContainer.appendChild(commentElement);
+            });
+            lucide.createIcons();
+        }
+
+        function likeComment(commentId) {
+            const comment = comments.find(c => c.id === commentId);
+            if (comment) {
+                comment.likes = (comment.likes || 0) + 1;
+                renderComments();
+            }
+        }
+
+        function likeReply(commentId, replyId) {
+            const comment = comments.find(c => c.id === commentId);
+            if (comment) {
+                const reply = comment.replies.find(r => r.id === replyId);
+                if (reply) {
+                    reply.likes = (reply.likes || 0) + 1;
+                    renderComments();
+                }
+            }
+        }
+
+        function toggleReplyForm(commentId) {
+            const replyForm = document.getElementById(`reply-form-${commentId}`);
+            replyForm.classList.toggle('hidden');
+        }
+
+        function submitReply(commentId) {
+            const authorCheckbox = document.getElementById(`reply-author-checkbox-${commentId}`);
+            const authorInput = document.getElementById(`reply-author-${commentId}`);
+            const contentInput = document.getElementById(`reply-content-${commentId}`);
+            const author = authorCheckbox.checked ? 'Jane Doe' : (authorInput.value || 'Anonymous');
+            const content = contentInput.value.trim();
+
+            if (content === '') {
+                alert('Reply cannot be empty.');
+                return;
+            }
+
+            const comment = comments.find(c => c.id === commentId);
+            if (comment) {
+                const newReply = {
+                    id: Date.now(),
+                    author: author,
+                    content: content,
+                    date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+                    likes: 0
+                };
+                if (!comment.replies) comment.replies = [];
+                comment.replies.push(newReply);
+                renderComments();
+                authorCheckbox.checked = false;
+                authorInput.value = '';
+                contentInput.value = ''; // 清空回复内容
+            }
+        }
+
+        const authorCheckbox = document.getElementById('author-checkbox');
+
+        authorCheckbox.addEventListener('change', () => {
+            if (authorCheckbox.checked) {
+                commentAuthor.value = 'Jane Doe';
+                commentAuthor.disabled = true;
+            } else {
+                commentAuthor.value = '';
+                commentAuthor.disabled = false;
+            }
+        });
+
+        commentForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const content = commentInput.value.trim();
+            if (content === '') {
+                alert('Comment cannot be empty.');
+                return;
+            }
+            const newComment = {
+                id: Date.now(),
+                author: authorCheckbox.checked ? 'Jane Doe' : (commentAuthor.value || 'Anonymous'),
+                content: content,
+                date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+                likes: 0,
+                replies: []
+            };
+            comments.unshift(newComment);
+            renderComments();
+            commentInput.value = '';
+            if (!authorCheckbox.checked) {
+                commentAuthor.value = '';
+            }
+        });
+
+        // Function to check if a string is purely numeric
+        function isNumeric(str) {
+            return /^\d+$/.test(str);
+        }
+
+        // Initial render
+        renderComments();
+    </script>
+</body>
+</html>

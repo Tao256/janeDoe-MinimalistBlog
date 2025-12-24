@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorite Books</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.544.0/dist/umd/lucide.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+            }
+            .text-gradient {
+                @apply bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-orange-500;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="../index.html" class="text-2xl font-bold text-gradient">My Favorite Books</a>
+            <button id="theme-toggle" class="p-2 rounded-full text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors duration-300">
+                <i data-lucide="sun" class="h-6 w-6 block dark:hidden"></i>
+                <i data-lucide="moon" class="h-6 w-6 hidden dark:block"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-center">A Curated Bookshelf</h2>
+            <p class="text-lg text-center text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                A collection of books that have inspired, educated, and entertained me throughout my journey.
+            </p>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Book Card 1 -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden card-hover flex">
+                <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Design of Everyday Things" class="w-1/3 object-cover">
+                <div class="p-4 flex-1">
+                    <h3 class="text-lg font-bold mb-1">The Design of Everyday Things</h3>
+                    <p class="text-amber-500 dark:text-amber-400 text-sm mb-2">by Don Norman</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">A powerful primer on how—and why—some products satisfy customers while others frustrate them.</p>
+                    <div class="flex items-center text-amber-500">
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book Card 2 -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden card-hover flex">
+                <img src="https://images.unsplash.com/photo-1531335773500-615da0572738?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Don't Make Me Think" class="w-1/3 object-cover">
+                <div class="p-4 flex-1">
+                    <h3 class="text-lg font-bold mb-1">Don't Make Me Think</h3>
+                    <p class="text-amber-500 dark:text-amber-400 text-sm mb-2">by Steve Krug</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">A common-sense approach to Web usability. It's short, profusely illustrated—and best of all—fun to read.</p>
+                    <div class="flex items-center text-amber-500">
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                        <i data-lucide="star-half" class="h-4 w-4 fill-current"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book Card 3 -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden card-hover flex">
+                <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sprint" class="w-1/3 object-cover">
+                <div class="p-4 flex-1">
+                    <h3 class="text-lg font-bold mb-1">Sprint</h3>
+                    <p class="text-amber-500 dark:text-amber-400 text-sm mb-2">by Jake Knapp</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">How to Solve Big Problems and Test New Ideas in Just Five Days.</p>
+                    <div class="flex items-center text-amber-500">
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                        <i data-lucide="star" class="h-4 w-4"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book Card 4 -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden card-hover flex">
+                <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Invisible Cities" class="w-1/3 object-cover">
+                <div class="p-4 flex-1">
+                    <h3 class="text-lg font-bold mb-1">Invisible Cities</h3>
+                    <p class="text-amber-500 dark:text-amber-400 text-sm mb-2">by Italo Calvino</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">A lyrical journey through imaginary cities, each more fantastical than the last.</p>
+                    <div class="flex items-center text-amber-500">
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book Card 5 -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden card-hover flex">
+                <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Little Prince" class="w-1/3 object-cover">
+                <div class="p-4 flex-1">
+                    <h3 class="text-lg font-bold mb-1">The Little Prince</h3>
+                    <p class="text-amber-500 dark:text-amber-400 text-sm mb-2">by Antoine de Saint-Exupéry</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">A timeless tale of love, loss, and the importance of seeing with the heart.</p>
+                    <div class="flex items-center text-amber-500">
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                        <i data-lucide="star-half" class="h-4 w-4 fill-current"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book Card 6 -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden card-hover flex">
+                <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Midnight Library" class="w-1/3 object-cover">
+                <div class="p-4 flex-1">
+                    <h3 class="text-lg font-bold mb-1">The Midnight Library</h3>
+                    <p class="text-amber-500 dark:text-amber-400 text-sm mb-2">by Matt Haig</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Between life and death there is a library, and within that library, the shelves go on forever.</p>
+                    <div class="flex items-center text-amber-500">
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                        <i data-lucide="star" class="h-4 w-4 fill-current"></i>
+                        <i data-lucide="star" class="h-4 w-4"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white dark:bg-gray-800 mt-12 py-8">
+        <div class="container mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
+            <p>&copy; 2025 My Favorite Books. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            themeToggle.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+                const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+                localStorage.setItem('theme', currentTheme);
+            });
+
+            // Initialize theme
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            }
+
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

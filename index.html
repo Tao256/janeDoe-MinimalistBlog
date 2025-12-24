@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.544.0/dist/umd/lucide.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            font-family: 'Inter', sans-serif;
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #000;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        .post-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .sort-icon-container.rotated {
+            transform: rotate(180deg);
+        }
+        .mobile-menu-enter {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        .mobile-menu-enter-active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .mobile-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: 50;
+        }
+        .mobile-menu-button-active .lucide-menu {
+            transform: rotate(90deg);
+        }
+        .lucide-menu {
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="text-black font-bold text-xl">Minimalist Blog</a>
+                </div>
+				<!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link active text-black hover:text-gray-600">Home</a>
+                    <a href="gallery.html" class="nav-link text-gray-600 hover:text-black">Gallery</a>
+                    <a href="about.html" class="nav-link text-gray-600 hover:text-black">About</a>
+                </nav>
+				<!-- Mobile Menu Button -->
+				<div class="md:hidden flex items-center">
+				    <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-700 focus:outline-none">
+				        <i data-lucide="menu" class="h-6 w-6"></i>
+				    </button>
+				</div>
+            </div>
+        </div>
+		<!-- Mobile Navigation -->
+		<div id="mobile-menu" class="hidden md:hidden bg-white shadow-md mobile-menu-enter mobile-menu">
+		    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+		        <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-black hover:bg-gray-50">Home</a>
+		        <a href="gallery.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-black">Gallery</a>
+		        <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-black">About</a>
+		    </div>
+		</div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- 核心布局：移动端垂直排列（侧边栏在上），电脑端水平排列（侧边栏在右） -->
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Sidebar (个人信息栏：DOM顺序提前，移动端在顶部；电脑端通过order调整到右侧) -->
+            <aside class="w-full lg:w-1/3 lg:order-2">
+                <div class="bg-white p-6 rounded-lg shadow-sm sticky top-20">
+                    <div class="flex flex-col items-center">
+                        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/7d3fdf5c53f84b95aa8a0e3527af76aa~tplv-a9rns2rl98-image.image?rcl=20251222225753D0F7F6B3A8AEE7981537&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769007486&x-signature=%2F37b%2B0AQ2yJOtLhiJa1GCWJT8B0%3D" alt="Personal Avatar" class="w-32 h-32 rounded-full mb-4 cursor-pointer" onclick="openModal('https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/7d3fdf5c53f84b95aa8a0e3527af76aa~tplv-a9rns2rl98-image.image?rcl=20251222225753D0F7F6B3A8AEE7981537&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1769007486&x-signature=%2F37b%2B0AQ2yJOtLhiJa1GCWJT8B0%3D')">
+                        <h2 class="text-lg font-semibold text-gray-800">Jane Doe</h2>
+                        <p class="text-sm text-gray-500 mt-1">UX Designer & Writer</p>
+                    </div>
+                    <div class="mt-6">
+                        <h3 class="text-sm font-semibold text-gray-800 uppercase tracking-wide">About Me</h3>
+                        <p class="mt-2 text-sm text-gray-600">
+                            Exploring the intersection of design and technology through writing and creative projects.
+                        </p>
+                    </div>
+                    <div class="mt-6">
+                        <h3 class="text-sm font-semibold text-gray-800 uppercase tracking-wide">Social</h3>
+                        <div class="mt-3 flex space-x-3">
+                            <a href="social/twitter.html" class="text-gray-400 hover:text-gray-500">
+                                <i data-lucide="twitter"></i>
+                            </a>
+                            <a href="social/instagram.html" class="text-gray-400 hover:text-gray-500">
+                                <i data-lucide="instagram"></i>
+                            </a>
+                            <a href="social/github.html" class="text-gray-400 hover:text-gray-500">
+                                <i data-lucide="github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <h3 class="text-sm font-semibold text-gray-800 uppercase tracking-wide">Search</h3>
+                        <div class="mt-4 flex items-center gap-2">
+                            <div class="relative flex-grow">
+                                <input type="text" id="search-input" class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500" placeholder="Search posts...">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i data-lucide="search" class="h-5 w-5 text-gray-400"></i>
+                                </div>
+                            </div>
+                            <button id="sort-by-date" class="p-2 rounded hover:bg-gray-200 transition-colors" title="切换排序">
+                                <span class="sort-icon-container inline-block transition-transform duration-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 4 4 4-4"></path><path d="M7 20V4"></path><path d="m21 8-4-4-4 4"></path><path d="M17 4v16"></path></svg>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <h3 class="text-sm font-semibold text-gray-800 uppercase tracking-wide">Tags</h3>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <button class="tag-filter px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300" data-tag="all">All</button>
+                            <button class="tag-filter px-3 py-1 text-xs font-medium rounded-full bg-blue-50 text-blue-700 hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-200" data-tag="Life">Life</button>
+                            <button class="tag-filter px-3 py-1 text-xs font-medium rounded-full bg-green-50 text-green-700 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-green-200" data-tag="Travel">Travel</button>
+                            <button class="tag-filter px-3 py-1 text-xs font-medium rounded-full bg-purple-50 text-purple-700 hover:bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-200" data-tag="Project">Project</button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Posts Area (电脑端左侧，移动端侧边栏下方) -->
+            <div id="posts-container" class="w-full lg:w-2/3 lg:order-1 space-y-6">
+                <!-- Posts will be dynamically inserted here -->
+            </div>
+        </div>
+        
+        <!-- Load More Button -->
+        <div class="mt-12 flex justify-center">
+            <button id="load-more-btn" class="px-6 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition duration-150 ease-in-out">
+                Load More
+            </button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-12">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-sm text-gray-500">© 2025 Minimalist Blog. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="privacy-policy.html" class="text-gray-400 hover:text-gray-500">
+                        <span class="sr-only">Privacy Policy</span>
+                        <i data-lucide="shield"></i>
+                    </a>
+                    <a href="terms-of-service.html" class="text-gray-400 hover:text-gray-500">
+                        <span class="sr-only">Terms of Service</span>
+                        <i data-lucide="file-text"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Mobile menu toggle (补充 index 缺失的移动端菜单交互)
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.remove('hidden');
+                    // Trigger reflow
+                    void mobileMenu.offsetWidth;
+                    mobileMenu.classList.add('mobile-menu-enter-active');
+                    mobileMenuButton.classList.add('mobile-menu-button-active');
+                } else {
+                    mobileMenu.classList.remove('mobile-menu-enter-active');
+                    mobileMenuButton.classList.remove('mobile-menu-button-active');
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
+                }
+            });
+        }
+
+        function openModal(imageSrc) {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="relative max-w-4xl max-h-[90vh]">
+                    <img src="${imageSrc}" alt="Enlarged Image" class="max-w-full max-h-[90vh] object-contain">
+                    <button onclick="closeModal()" class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75">
+                        <i data-lucide="x" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+
+        function closeModal() {
+            const modal = document.querySelector('.fixed.inset-0.bg-black.bg-opacity-75');
+            if (modal) {
+                document.body.removeChild(modal);
+                document.body.style.overflow = '';
+            }
+        }
+
+        const posts = [
+            {
+                id: 1,
+                title: 'The Art of Minimalism in Design',
+                date: 'December 18, 2025',
+                excerpt: 'Exploring how minimalism can transform your design workflow and create more impactful user experiences.',
+                content: '...',
+                image: 'https://free.picui.cn/free/2025/12/24/694bbd332a059.jpg',
+                tags: ['Project'],
+                url: 'posts/post-1.html'
+            },
+            {
+                id: 2,
+                title: 'Understanding User Psychology',
+                date: 'December 15, 2025',
+                excerpt: 'How cognitive biases influence user behavior and what designers can do to create more intuitive products.',
+                content: '...',
+                image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                tags: ['Project'],
+                url: 'posts/post-2.html'
+            },
+            {
+                id: 3,
+                title: 'A Beginner\'s Guide to UI/UX',
+                date: 'December 10, 2025',
+                excerpt: 'Breaking down the fundamentals of user interface and user experience design for those just starting out.',
+                content: '...',
+                image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                tags: ['Project'],
+                url: 'posts/post-3.html'
+            },
+            {
+                id: 4,
+                title: 'Design Systems: Why They Matter',
+                date: 'December 5, 2025',
+                excerpt: 'The importance of building a cohesive design system for scaling products and maintaining consistency.',
+                content: '...',
+                image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                tags: ['Project'],
+                url: 'posts/post-4.html'
+            },
+            {
+                id: 5,
+                title: 'Working Remotely: Tips for Designers',
+                date: 'November 28, 2025',
+                excerpt: 'How to stay productive, creative, and connected while working from home as a designer.',
+                content: '...',
+                image: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                tags: ['Life'],
+                url: 'posts/post-5.html'
+            },
+            {
+                id: 6,
+                title: 'The Future of Interactive Design',
+                date: 'November 20, 2025',
+                excerpt: 'Emerging technologies and trends that are shaping the future of how we interact with digital products.',
+                content: '...',
+				image:'https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                tags: ['Project'],
+                url: 'posts/post-6.html'
+            },
+            {
+                id: 7,
+                title: 'A Weekend in the Mountains',
+                date: 'November 15, 2025',
+                excerpt: 'Reflecting on a recent hiking trip and the beauty of disconnecting from technology.',
+                content: '...',
+                image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                tags: ['Travel', 'Life'],
+                url: 'posts/post-7.html'
+            },
+            {
+                id: 8,
+                title: 'Exploring the Streets of Tokyo',
+                date: 'November 10, 2025',
+                excerpt: 'A visual diary of my recent trip to Tokyo and the inspiring design I found around every corner.',
+                content: '...',
+                image: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                tags: ['Travel'],
+                url: 'posts/post-8.html'
+            },
+            {
+                id: 9,
+                title: 'The Power of Typography',
+                date: 'November 5, 2025',
+                excerpt: 'How the right choice of fonts can elevate your design and improve readability.',
+                content: '...',
+				image:'https://free.picui.cn/free/2025/12/24/694bc1b8bb384.jpg',
+                tags: ['Project'],
+                url: 'posts/post-9.html'
+            },
+            {
+                id: 10,
+                title: 'Mindfulness in Design',
+                date: 'October 30, 2025',
+                excerpt: 'How practicing mindfulness can lead to more thoughtful and intentional design decisions.',
+                content: '...',
+				image:'https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                tags: ['Life', 'Project'],
+                url: 'posts/post-10.html'
+            }
+        ];
+
+        const postsContainer = document.getElementById('posts-container');
+        const loadMoreBtn = document.getElementById('load-more-btn');
+        const searchInput = document.getElementById('search-input');
+        
+        let searchTerm = '';
+        let sortNewestFirst = true;
+        let selectedTag = 'all';
+        let visiblePosts = {
+            'all': 3,
+            'Life': 3,
+            'Travel': 3,
+            'Project': 3
+        };
+
+        function renderPosts() {
+            postsContainer.innerHTML = '';
+            let postsToShow = posts;
+
+            if (searchTerm) {
+                postsToShow = postsToShow.filter(post => post.title.toLowerCase().includes(searchTerm.toLowerCase()));
+            }
+            
+            if (selectedTag !== 'all') {
+                 postsToShow = postsToShow.filter(post => post.tags && post.tags.includes(selectedTag));
+            }
+
+            postsToShow.sort((a, b) => {
+                return sortNewestFirst ? new Date(b.date) - new Date(a.date) : new Date(a.date) - new Date(b.date);
+            });
+            postsToShow = postsToShow.slice(0, visiblePosts[selectedTag]);
+
+            if (postsToShow.length === 0) {
+                const noResultsElement = document.createElement('div');
+                noResultsElement.className = 'text-center py-8 text-gray-500';
+                noResultsElement.textContent = 'No posts found.';
+                postsContainer.appendChild(noResultsElement);
+            } else {
+                const fragment = document.createDocumentFragment();
+                postsToShow.forEach(post => {
+                    const postElement = document.createElement('div');
+                    postElement.className = 'post-card bg-white p-6 rounded-lg shadow-sm flex flex-col md:flex-row gap-4';
+                    
+                    let tagsHtml = '';
+                    if (post.tags && post.tags.length > 0) {
+                        tagsHtml = post.tags.map(tag => {
+                            let bgColor = 'bg-blue-50';
+                            let textColor = 'text-blue-700';
+                            if (tag === 'Travel') {
+                                bgColor = 'bg-green-50';
+                                textColor = 'text-green-700';
+                            } else if (tag === 'Project') {
+                                bgColor = 'bg-purple-50';
+                                textColor = 'text-purple-700';
+                            }
+                            return `<span class="inline-block px-2 py-0.5 text-xs font-medium rounded-full ${bgColor} ${textColor} mr-1">${tag}</span>`;
+                        }).join('');
+                    }
+
+                    const hasImage = post.image;
+                    postElement.innerHTML = `
+                        <div class="${hasImage ? 'md:w-3/4' : 'w-full'}">
+                            <div class="flex items-center mb-2">
+                                <h2 class="text-xl font-semibold text-gray-900"><a href="${post.url}" target="_blank">${post.title}</a></h2>
+                            </div>
+                            <div class="flex items-center mb-2">
+                                <span class="text-sm text-gray-500">${post.date}</span>
+                                <div class="ml-4 flex items-center">
+                                    ${tagsHtml}
+                                </div>
+                            </div>
+                            <p class="text-gray-600">${post.excerpt}</p>
+                            <a href="${post.url}" class="mt-4 inline-block text-sm font-medium text-black hover:text-gray-600" target="_blank">Read more</a>
+                        </div>
+                        ${hasImage ? `<div class="md:w-1/4">
+                            <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover rounded-lg shadow-md cursor-pointer" data-image-src="${post.image}" onclick="openModal('${post.image}')">
+                        </div>` : ''}
+                    `;
+                    fragment.appendChild(postElement);
+                });
+                postsContainer.appendChild(fragment);
+                
+                const newImages = fragment.querySelectorAll('img');
+                newImages.forEach(img => {
+                    img.addEventListener('click', () => {
+                        openModal(img.dataset.imageSrc);
+                    });
+                });
+            }
+
+            if (searchTerm) {
+                loadMoreBtn.style.display = 'none';
+            } else {
+                const allFilteredPosts = posts.filter(post => {
+                    if (selectedTag !== 'all') {
+                        return post.tags && post.tags.includes(selectedTag);
+                    }
+                    return true;
+                });
+                loadMoreBtn.style.display = visiblePosts[selectedTag] >= allFilteredPosts.length ? 'none' : 'inline-block';
+            }
+        }
+
+        loadMoreBtn.addEventListener('click', () => {
+            visiblePosts[selectedTag] += 3;
+            renderPosts();
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            searchTerm = e.target.value;
+            renderPosts();
+        });
+
+        document.querySelectorAll('.tag-filter').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.tag-filter').forEach(btn => btn.classList.remove('ring-2', 'ring-offset-2'));
+                button.classList.add('ring-2', 'ring-offset-2');
+                selectedTag = button.dataset.tag;
+                renderPosts();
+            });
+        });
+
+        // Add a more robust event listener
+        const sortButton = document.getElementById('sort-by-date');
+        if (sortButton) {
+            sortButton.addEventListener('click', function() {
+                // Toggle the sort order and log it for debugging
+                sortNewestFirst = !sortNewestFirst;
+                console.log('Sort order toggled. Now sorting:', sortNewestFirst ? 'Newest First' : 'Oldest First');
+                
+                // Toggle the icon rotation class on the container
+                const iconContainer = this.querySelector('.sort-icon-container');
+                if (iconContainer) {
+                    iconContainer.classList.toggle('rotated');
+                }
+                
+                // Re-render the posts with the new sort order
+                renderPosts();
+            });
+        } else {
+            console.error('Sort button not found!');
+        }
+
+        // Initial render
+        renderPosts();
+    </script>
+</body>
+</html>
